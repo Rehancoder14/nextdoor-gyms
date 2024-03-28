@@ -18,5 +18,6 @@ class AppRouter extends $AppRouter {
           path: '/home',
           children: [],
         ),
+        //
       ];
 }
