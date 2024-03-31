@@ -72,11 +72,16 @@ class SplashScreenoneScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       const Spacer(
-                        flex: 36,
+                        flex: 32,
                       ),
                       CustomImageView(
+                        radius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(7),
+                            bottomRight: Radius.circular(
+                              6,
+                            )),
                         imagePath: ImageConstant.imgRectangle684,
-                        height: 48.v,
+                        height: 52.v,
                         alignment: Alignment.centerRight,
                       ),
                       const Spacer(
