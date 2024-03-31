@@ -136,7 +136,7 @@ class SplashScreenoneScreen extends StatelessWidget {
     return Align(
       alignment: Alignment.topLeft,
       child: Container(
-        height: 410.v,
+        height: 380.v,
         width: 359.h,
         margin: EdgeInsets.only(top: 163.v),
         child: Stack(
