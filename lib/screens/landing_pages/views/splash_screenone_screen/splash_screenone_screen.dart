@@ -26,7 +26,7 @@ class SplashScreenoneScreen extends StatelessWidget {
                   margin: EdgeInsets.only(right: 1.h),
                   padding: EdgeInsets.symmetric(
                     horizontal: 38.h,
-                    vertical: 42.v,
+                    vertical: 30.v,
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -40,16 +40,15 @@ class SplashScreenoneScreen extends StatelessWidget {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.center,
-                          style: theme.textTheme.headlineLarge!.copyWith(
-                            height: 1.50,
-                          ),
+                          style: theme.textTheme.headlineLarge!
+                              .copyWith(height: 1, fontSize: 22),
                         ),
                       ),
-                      SizedBox(height: 65.v),
-                      CustomImageView(
-                        imagePath: ImageConstant.imgGroup427,
-                        height: 7.v,
-                      ),
+                      SizedBox(height: 56.v),
+                      // CustomImageView(
+                      //   imagePath: ImageConstant.imgGroup427,
+                      //   height: 7.v,
+                      // ),
                     ],
                   ),
                 ),
@@ -57,7 +56,7 @@ class SplashScreenoneScreen extends StatelessWidget {
               Align(
                 alignment: Alignment.topCenter,
                 child: Container(
-                  margin: EdgeInsets.only(bottom: 235.v),
+                  margin: EdgeInsets.only(bottom: 158.v),
                   padding: EdgeInsets.symmetric(vertical: 67.v),
                   decoration: BoxDecoration(
                     image: DecorationImage(

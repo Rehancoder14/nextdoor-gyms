@@ -25,14 +25,14 @@ class SplashScreentwoScreen extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.symmetric(
                     horizontal: 16.h,
-                    vertical: 49.v,
+                    vertical: 30.v,
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Spacer(),
+                      const Spacer(),
                       SizedBox(
                         width: 343.h,
                         child: Text(
@@ -40,17 +40,16 @@ class SplashScreentwoScreen extends StatelessWidget {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.center,
-                          style: theme.textTheme.headlineLarge!.copyWith(
-                            height: 1.50,
-                          ),
+                          style: theme.textTheme.headlineLarge!
+                              .copyWith(height: 1, fontSize: 22),
                         ),
                       ),
                       SizedBox(height: 56.v),
-                      CustomImageView(
-                        imagePath: ImageConstant.imgGroup427Indigo100,
-                        height: 6.v,
-                        margin: EdgeInsets.only(left: 107.h),
-                      ),
+                      // CustomImageView(
+                      //   imagePath: ImageConstant.imgGroup427Indigo100,
+                      //   height: 6.v,
+                      //   margin: EdgeInsets.only(left: 107.h),
+                      // ),
                     ],
                   ),
                 ),
@@ -60,7 +59,7 @@ class SplashScreentwoScreen extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.symmetric(
                     horizontal: 32.h,
-                    vertical: 112.v,
+                    vertical: 115.v,
                   ),
                   decoration: BoxDecoration(
                     image: DecorationImage(

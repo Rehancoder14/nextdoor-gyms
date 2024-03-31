@@ -27,8 +27,6 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Stack(
         children: [
           Container(
-            height: double.maxFinite,
-            width: double.maxFinite,
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
@@ -39,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
           ),
           AnimatedSwitcher(
-            duration: const Duration(milliseconds: 1000),
+            duration: const Duration(milliseconds: 700),
             child: _showSlider
                 ? const SliderScreen() // handle auth guard
                 : const SizedBox(),
