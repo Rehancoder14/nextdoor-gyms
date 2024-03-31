@@ -39,4 +39,18 @@ class ImageConstant {
   static String img22 = '$imagePath/img_2_2.png';
 
   static String imageNotFound = 'assets/images/image_not_found.png';
+
+  // login images
+  static String imgBrownYellowSun = '$imagePath/img_brown_yellow_sun.png';
+
+  static String img101 = '$imagePath/img_10_1.png';
+
+  // verify OTP images
+  static String imgRectangle686 = '$imagePath/img_rectangle_686.png';
+
+  static String imgBrownYellowSun708x375 =
+      '$imagePath/img_brown_yellow_sun_708x375.png';
+
+  // Common images
+  static String imgLogo = '$imagePath/logo.png';
 }

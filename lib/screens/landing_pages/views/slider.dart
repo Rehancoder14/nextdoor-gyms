@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nextdoorgym/screens/auth_page/views/login_screen.dart';
 import 'package:nextdoorgym/screens/landing_pages/views/splash_screenone_screen/splash_screenone_screen.dart';
 import 'package:nextdoorgym/screens/landing_pages/views/splash_screentwo_screen/splash_screentwo_screen.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
@@ -39,12 +40,37 @@ class _SliderScreenState extends State<SliderScreen> {
               ],
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(
-              2, // number of pages
-              (index) => buildDot(index),
-            ),
+          Stack(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  2, // number of pages
+                  (index) => buildDot(index),
+                ),
+              ),
+              Positioned(
+                  right: 5,
+                  bottom: 5,
+                  child: _currentPage == 1
+                      ? TextButton(
+                          child: Text(
+                            'Login',
+                            style: TextStyle(
+                              color: appTheme.indigo300,
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LoginScreen(),
+                              ),
+                            );
+                          },
+                        )
+                      : Container())
+            ],
           ),
         ],
       ),
@@ -58,7 +84,7 @@ class _SliderScreenState extends State<SliderScreen> {
       margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 15),
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: _currentPage == index ? PrimaryColors().indigo100 : Colors.grey,
+        color: _currentPage == index ? PrimaryColors().indigo300 : Colors.grey,
       ),
     );
   }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nextdoorgym/screens/landing_pages/views/slider.dart';
-import 'package:nextdoorgym/theme/custom_image_view.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
 import 'package:nextdoorgym/utils/size.dart';
+import 'package:nextdoorgym/widgets/custom_image_view.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

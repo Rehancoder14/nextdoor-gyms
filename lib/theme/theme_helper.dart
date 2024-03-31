@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:nextdoorgym/utils/size.dart';
 
 String _appTheme = "primary";
 
@@ -49,11 +50,41 @@ class ThemeHelper {
 /// Class containing the supported text theme styles.
 class TextThemes {
   static TextTheme textTheme(ColorScheme colorScheme) => TextTheme(
-        headlineLarge: TextStyle(
-          color: appTheme.gray900,
-          fontSize: 30,
+        bodyMedium: TextStyle(
+          color: appTheme.blueGray900,
+          fontSize: 13.fSize,
           fontFamily: 'Droid Sans',
           fontWeight: FontWeight.w400,
+        ),
+        bodySmall: TextStyle(
+          color: appTheme.blueGray600,
+          fontSize: 10.fSize,
+          fontFamily: 'Droid Sans',
+          fontWeight: FontWeight.w400,
+        ),
+        displayMedium: TextStyle(
+          color: appTheme.gray900,
+          fontSize: 43.fSize,
+          fontFamily: 'Droid Sans',
+          fontWeight: FontWeight.w700,
+        ),
+        headlineSmall: TextStyle(
+          color: appTheme.gray90001,
+          fontSize: 24.fSize,
+          fontFamily: 'Droid Sans',
+          fontWeight: FontWeight.w700,
+        ),
+        titleLarge: TextStyle(
+          color: appTheme.gray600,
+          fontSize: 20.fSize,
+          fontFamily: 'Droid Sans',
+          fontWeight: FontWeight.w400,
+        ),
+        titleMedium: TextStyle(
+          color: appTheme.gray100,
+          fontSize: 18.fSize,
+          fontFamily: 'Droid Sans',
+          fontWeight: FontWeight.w700,
         ),
       );
 }
@@ -75,9 +106,22 @@ class PrimaryColors {
 
   // Indigo
   Color get indigo100 => Color(0XFFC0B6FF);
+  Color get indigo50 => Color.fromARGB(255, 211, 205, 253);
+  Color get indigo200 => Color.fromARGB(255, 185, 174, 255);
+  Color get indigo300 => Color.fromARGB(255, 149, 134, 249);
 
   // White
   Color get whiteA700 => Color(0XFFFFFFFF);
+  Color get black9004c => Color(0X4C000000);
+
+  // BlueGray
+  Color get blueGray600 => Color(0XFF47548C);
+  Color get blueGray900 => Color(0XFF2E344A);
+
+  // Gray
+  Color get gray100 => Color(0XFFF6F6F6);
+  Color get gray600 => Color(0XFF7B7B7B);
+  Color get gray60001 => Color(0XFF6E6E6E);
 }
 
 PrimaryColors get appTheme => ThemeHelper().themeColor();
