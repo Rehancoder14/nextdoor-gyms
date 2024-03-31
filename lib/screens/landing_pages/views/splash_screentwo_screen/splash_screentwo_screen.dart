@@ -25,7 +25,7 @@ class SplashScreentwoScreen extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.symmetric(
                     horizontal: 16.h,
-                    vertical: 30.v,
+                    vertical: 10.v,
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -44,7 +44,7 @@ class SplashScreentwoScreen extends StatelessWidget {
                               .copyWith(height: 1, fontSize: 22),
                         ),
                       ),
-                      SizedBox(height: 56.v),
+                      SizedBox(height: 20.v),
                       // CustomImageView(
                       //   imagePath: ImageConstant.imgGroup427Indigo100,
                       //   height: 6.v,
@@ -59,7 +59,7 @@ class SplashScreentwoScreen extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.symmetric(
                     horizontal: 32.h,
-                    vertical: 115.v,
+                    vertical: MediaQuery.of(context).size.height * 0.15,
                   ),
                   decoration: BoxDecoration(
                     image: DecorationImage(
@@ -76,7 +76,7 @@ class SplashScreentwoScreen extends StatelessWidget {
                       Align(
                         alignment: Alignment.centerRight,
                         child: Container(
-                          height: 272.v,
+                          height: 280.v,
                           width: 223.h,
                           margin: EdgeInsets.only(right: 29.h),
                           child: Stack(
@@ -105,9 +105,8 @@ class SplashScreentwoScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(height: 45.v),
                       _buildEight(context),
-                      SizedBox(height: 15.v),
+                      SizedBox(height: 80.v),
                     ],
                   ),
                 ),

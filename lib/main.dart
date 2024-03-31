@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nextdoorgym/screens/home_page/controller/home_provider.dart';
-import 'package:nextdoorgym/screens/landing_pages/views/splash_screen.dart';
+import 'package:nextdoorgym/screens/landing_pages/views/splashscreen.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
 import 'package:nextdoorgym/utils/size.dart';
 import 'package:provider/provider.dart';

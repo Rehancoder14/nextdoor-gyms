@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
           ),
           AnimatedSwitcher(
-            duration: const Duration(milliseconds: 700),
+            duration: const Duration(milliseconds: 1000),
             child: _showSlider
                 ? const SliderScreen() // handle auth guard
                 : const SizedBox(),
