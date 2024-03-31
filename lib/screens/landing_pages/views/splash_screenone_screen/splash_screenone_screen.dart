@@ -136,7 +136,7 @@ class SplashScreenoneScreen extends StatelessWidget {
     return Align(
       alignment: Alignment.topLeft,
       child: Container(
-        height: 390.v,
+        height: 410.v,
         width: 359.h,
         margin: EdgeInsets.only(top: 163.v),
         child: Stack(
@@ -144,13 +144,13 @@ class SplashScreenoneScreen extends StatelessWidget {
           children: [
             CustomImageView(
               imagePath: ImageConstant.img11,
-              width: 359.h,
+              width: 365.h,
               alignment: Alignment.center,
             ),
             Align(
               alignment: Alignment.bottomRight,
               child: Container(
-                height: 76.v,
+                height: 95.v,
                 width: 68.h,
                 margin: EdgeInsets.only(
                   right: 40.h,
@@ -159,23 +159,6 @@ class SplashScreenoneScreen extends StatelessWidget {
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: Container(
-                        height: 40.v,
-                        width: 38.h,
-                        margin: EdgeInsets.only(
-                          right: 3.h,
-                          bottom: 6.v,
-                        ),
-                        decoration: BoxDecoration(
-                          color: appTheme.gray90001,
-                          borderRadius: BorderRadius.circular(
-                            20.h,
-                          ),
-                        ),
-                      ),
-                    ),
                     CustomImageView(
                       imagePath: ImageConstant.imgGymv12,
                       width: 68.h,
