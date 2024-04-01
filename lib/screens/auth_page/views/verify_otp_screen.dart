@@ -138,7 +138,7 @@ class VerifyOtpScreen extends StatelessWidget {
                             ),
                             child: Text(
                               "Nextdoor",
-                              style: CustomTextStyles.displayMedium46,
+                              style: CustomTextStyles.bodyLargeOnPrimary,
                             ),
                           ),
                         ],

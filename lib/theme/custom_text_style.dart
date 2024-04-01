@@ -2,24 +2,89 @@ import 'package:flutter/material.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
 import 'package:nextdoorgym/utils/size.dart';
 
-/// A collection of pre-defined text styles for customizing text appearance,
-/// categorized by different font families and weights.
-/// Additionally, this class includes extensions on [TextStyle] to easily apply specific font families to text.
-
 class CustomTextStyles {
-  // Display text style
-  static get displayMedium46 => theme.textTheme.displayMedium!.copyWith(
-        fontSize: 46.fSize,
+  // Body text style
+  static get bodyLargeOnPrimary => theme.textTheme.bodyLarge!.copyWith(
+        color: theme.colorScheme.onPrimary,
+      );
+  static get bodyMediumDroidSans =>
+      theme.textTheme.bodyMedium!.droidSans.copyWith(
+        fontSize: 13.fSize,
+      );
+  static get bodyMediumDroidSans14 =>
+      theme.textTheme.bodyMedium!.droidSans.copyWith(
+        fontSize: 14.fSize,
+      );
+  static get bodyMediumDroidSansOnPrimary =>
+      theme.textTheme.bodyMedium!.droidSans.copyWith(
+        color: theme.colorScheme.onPrimary,
+        fontSize: 14.fSize,
+      );
+  static get bodyMediumDroidSansPrimaryContainer =>
+      theme.textTheme.bodyMedium!.droidSans.copyWith(
+        color: theme.colorScheme.primaryContainer,
+        fontSize: 13.fSize,
       );
   // Title text style
-  static get titleLargeBlack9004c => theme.textTheme.titleLarge!.copyWith(
-      color: appTheme.black900, fontWeight: FontWeight.w500, fontSize: 16);
+  static get titleLarge20 => theme.textTheme.titleLarge!.copyWith(
+      fontSize: 20.fSize, fontWeight: FontWeight.w500, color: Colors.black87);
+  static get titleLargeBlack900 => theme.textTheme.titleLarge!.copyWith(
+        color: appTheme.black900,
+        fontSize: 20.fSize,
+      );
+  static get titleLargeBlack900Bold => theme.textTheme.titleLarge!.copyWith(
+        color: appTheme.black900,
+        fontSize: 20.fSize,
+        fontWeight: FontWeight.w700,
+      );
+  static get titleLargeOnPrimaryContainer =>
+      theme.textTheme.titleLarge!.copyWith(
+        color: theme.colorScheme.onPrimaryContainer,
+        fontSize: 20.fSize,
+      );
+  static get titleLargeOnPrimaryContainer20 =>
+      theme.textTheme.titleLarge!.copyWith(
+        color: theme.colorScheme.onPrimaryContainer,
+        fontSize: 20.fSize,
+      );
+  static get titleLargeff000000 => theme.textTheme.titleLarge!.copyWith(
+        color: Color(0XFF000000),
+        fontSize: 20.fSize,
+      );
+  static get titleLargeff00000020 => theme.textTheme.titleLarge!.copyWith(
+        color: Color(0XFF000000),
+        fontSize: 20.fSize,
+      );
+  static get titleLargeff010101 => theme.textTheme.titleLarge!.copyWith(
+        color: Color(0XFF010101),
+        fontSize: 20.fSize,
+      );
+  static get titleLargeff010101Bold => theme.textTheme.titleLarge!.copyWith(
+        color: Color(0XFF010101),
+        fontSize: 20.fSize,
+        fontWeight: FontWeight.w700,
+      );
+  static get titleMediumBlack900 => theme.textTheme.titleMedium!.copyWith(
+        color: appTheme.black900,
+      );
 }
 
 extension on TextStyle {
   TextStyle get droidSans {
     return copyWith(
       fontFamily: 'Droid Sans',
+    );
+  }
+
+  TextStyle get openSans {
+    return copyWith(
+      fontFamily: 'Open Sans',
+    );
+  }
+
+  TextStyle get roboto {
+    return copyWith(
+      fontFamily: 'Roboto',
     );
   }
 }

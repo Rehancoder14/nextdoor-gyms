@@ -37,6 +37,24 @@ class ThemeHelper {
       colorScheme: colorScheme,
       textTheme: TextThemes.textTheme(colorScheme),
       scaffoldBackgroundColor: appTheme.whiteA700,
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: colorScheme.primary,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          visualDensity: const VisualDensity(
+            vertical: -4,
+            horizontal: -4,
+          ),
+          padding: EdgeInsets.zero,
+        ),
+      ),
+      dividerTheme: DividerThemeData(
+        thickness: 1,
+        space: 1,
+        color: colorScheme.errorContainer,
+      ),
     );
   }
 
@@ -91,7 +109,20 @@ class TextThemes {
 
 /// Class containing the supported color schemes.
 class ColorSchemes {
-  static final primaryColorScheme = ColorScheme.light();
+  static final primaryColorScheme = ColorScheme.light(
+    // Primary colors
+    primary: Color(0XFFC0B6FF),
+    primaryContainer: Color(0XFF2E344A),
+    secondaryContainer: Color(0XFFB4B4B4),
+
+    // Error colors
+    errorContainer: Color(0XFF2AD23A),
+    onError: Color(0XFFEAEAEA),
+
+    // On colors(text colors)
+    onPrimary: Color(0XFF252727),
+    onPrimaryContainer: Color(0XFF010101),
+  );
 }
 
 /// Class containing custom colors for a primary theme.
@@ -105,6 +136,7 @@ class PrimaryColors {
   Color get gray90001 => Color(0XFF252727);
 
   // Indigo
+  Color get indigo150 => Color.fromRGBO(192, 182, 255, 1);
   Color get indigo100 => Color(0XFFC0B6FF);
   Color get indigo50 => Color.fromARGB(255, 211, 205, 253);
   Color get indigo200 => Color.fromARGB(255, 185, 174, 255);
@@ -122,6 +154,10 @@ class PrimaryColors {
   Color get gray100 => Color(0XFFF6F6F6);
   Color get gray600 => Color(0XFF7B7B7B);
   Color get gray60001 => Color(0XFF6E6E6E);
+
+  // BlueGray
+  Color get blueGray50 => Color(0XFFF1F1F1);
+  Color get blueGray90001 => Color(0XFF2C2C2E);
 }
 
 PrimaryColors get appTheme => ThemeHelper().themeColor();

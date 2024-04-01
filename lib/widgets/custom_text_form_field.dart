@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nextdoorgym/theme/custom_text_style.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
 import 'package:nextdoorgym/utils/size.dart';
 
@@ -28,6 +27,7 @@ class CustomTextFormField extends StatelessWidget {
     this.fillColor,
     this.filled = true,
     this.validator,
+    this.maxLen,
   }) : super(
           key: key,
         );
@@ -73,7 +73,7 @@ class CustomTextFormField extends StatelessWidget {
   final Color? fillColor;
 
   final bool? filled;
-
+  final int? maxLen;
   final FormFieldValidator<String>? validator;
 
   @override
@@ -89,6 +89,7 @@ class CustomTextFormField extends StatelessWidget {
   Widget textFormFieldWidget(BuildContext context) => SizedBox(
         width: width ?? double.maxFinite,
         child: TextFormField(
+          maxLength: maxLen,
           scrollPadding:
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
           controller: controller,
@@ -101,7 +102,7 @@ class CustomTextFormField extends StatelessWidget {
             }
           },
           autofocus: autofocus!,
-          style: textStyle ?? CustomTextStyles.titleLargeBlack9004c,
+          style: textStyle ?? theme.textTheme.titleMedium,
           obscureText: obscureText!,
           textInputAction: textInputAction,
           keyboardType: textInputType,
@@ -112,14 +113,14 @@ class CustomTextFormField extends StatelessWidget {
       );
   InputDecoration get decoration => InputDecoration(
         hintText: hintText ?? "",
-        hintStyle: hintStyle ?? CustomTextStyles.titleLargeBlack9004c,
+        hintStyle: hintStyle ?? theme.textTheme.titleMedium,
         prefixIcon: prefix,
         prefixIconConstraints: prefixConstraints,
         suffixIcon: suffix,
         suffixIconConstraints: suffixConstraints,
         isDense: true,
-        contentPadding: contentPadding ?? EdgeInsets.all(16.h),
-        fillColor: fillColor ?? appTheme.indigo100,
+        contentPadding: contentPadding,
+        fillColor: fillColor ?? appTheme.blueGray50,
         filled: filled,
         border: borderDecoration ??
             OutlineInputBorder(

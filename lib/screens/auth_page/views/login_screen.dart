@@ -2,12 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:nextdoorgym/constants/image_constants.dart';
-import 'package:nextdoorgym/screens/auth_page/views/verify_otp_screen.dart';
-import 'package:nextdoorgym/theme/theme_helper.dart';
+import 'package:nextdoorgym/screens/auth_page/controller/auth_provider.dart';
+import 'package:nextdoorgym/theme/custom_text_style.dart';
 import 'package:nextdoorgym/utils/size.dart';
+import 'package:nextdoorgym/widgets/appbar_leading_image.dart';
+import 'package:nextdoorgym/widgets/custom_app_bar.dart';
 import 'package:nextdoorgym/widgets/custom_elevated_button.dart';
 import 'package:nextdoorgym/widgets/custom_image_view.dart';
-import 'package:nextdoorgym/widgets/custom_text_form_field.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key})
@@ -15,64 +17,71 @@ class LoginScreen extends StatelessWidget {
           key: key,
         );
 
-  TextEditingController mobileNumberController = TextEditingController();
+  TextEditingController phoneNumberController = TextEditingController();
+
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
+        appBar: _buildAppBar(context),
         body: SizedBox(
-          height: 840.v,
-          width: double.maxFinite,
-          child: Stack(
-            alignment: Alignment.topLeft,
-            children: [
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: SizedBox(
-                  height: 580.v,
-                  width: double.maxFinite,
-                  child: Stack(
-                    alignment: Alignment.topCenter,
-                    children: [
-                      CustomImageView(
-                        imagePath: ImageConstant.imgBrownYellowSun,
-                        width: 375.h,
-                        radius: BorderRadius.only(
-                          topRight: Radius.circular(72.h),
-                          topLeft: Radius.circular(72.h),
-                        ),
-                        alignment: Alignment.center,
-                      ),
-                      _buildSeven(context),
-                    ],
-                  ),
+          width: SizeUtils.width,
+          child: SingleChildScrollView(
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
+            child: Form(
+              key: _formKey,
+              child: Container(
+                width: double.maxFinite,
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30.h,
+                  vertical: 25.v,
                 ),
-              ),
-              Align(
-                alignment: Alignment.topLeft,
-                child: Container(
-                  height: 103.v,
-                  width: 110.h,
-                  margin: EdgeInsets.only(
-                    left: 125.h,
-                    top: 85.v,
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(
-                      55.h,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomImageView(
+                      imagePath: ImageConstant.img101,
+                      width: 240.h,
+                      margin: EdgeInsets.only(left: 24.h),
                     ),
-                  ),
+                    SizedBox(height: 21.v),
+                    Text(
+                      "Login with mobile Number",
+                      style: CustomTextStyles.titleLarge20,
+                    ),
+                    SizedBox(height: 8.v),
+                    // CustomPhoneNumber(
+                    //   country: selectedCountry,
+                    //   controller: phoneNumberController,
+
+                    // ),
+                    SizedBox(height: 31.v),
+                    CustomElevatedButton(
+                      onPressed: () {
+                        if (context
+                                .read<AuthProvider>()
+                                .otpController
+                                .text
+                                .length ==
+                            6) {
+                          context.read<AuthProvider>().sendOtp(
+                                context: context,
+                              );
+                        }
+                      },
+                      text: "verify OTP",
+                      buttonTextStyle: CustomTextStyles.titleMediumBlack900,
+                    ),
+                    SizedBox(height: 5.v),
+                  ],
                 ),
               ),
-              CustomImageView(
-                imagePath: ImageConstant.img101,
-                width: 192.h,
-                alignment: Alignment.topLeft,
-                margin: EdgeInsets.only(left: 84.h),
-              ),
-            ],
+            ),
           ),
         ),
       ),
@@ -80,103 +89,12 @@ class LoginScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildSeven(BuildContext context) {
-    return Align(
-      alignment: Alignment.topCenter,
-      child: Padding(
-        padding: EdgeInsets.only(
-          left: 25.h,
-          top: 79.v,
-          right: 14.h,
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(left: 25.h),
-              child: Text(
-                "WELCOME TO",
-                style: theme.textTheme.titleLarge,
-              ),
-            ),
-            SizedBox(
-              height: 66.v,
-              width: 264.h,
-              child: Stack(
-                alignment: Alignment.centerLeft,
-                children: [
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: Padding(
-                      padding: EdgeInsets.only(top: 6.v),
-                      child: Text(
-                        "Nextdoor",
-                        style: theme.textTheme.displayMedium!
-                            .copyWith(fontSize: 42),
-                      ),
-                    ),
-                  ),
-                  CustomImageView(
-                    imagePath: ImageConstant.imgLogo,
-                    height: 66.v,
-                    radius: BorderRadius.circular(
-                      4.h,
-                    ),
-                    alignment: Alignment.centerLeft,
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 40.v),
-            Padding(
-              padding: EdgeInsets.only(left: 10.h),
-              child: Text(
-                "Login with mobile Number",
-                style: theme.textTheme.headlineSmall!.copyWith(fontSize: 18),
-              ),
-            ),
-            SizedBox(height: 14.v),
-            Padding(
-              padding: EdgeInsets.only(
-                left: 7.h,
-                right: 14.h,
-              ),
-              child: CustomTextFormField(
-                fillColor: appTheme.indigo100,
-                controller: mobileNumberController,
-                hintText: "Enter mobile number",
-                textInputAction: TextInputAction.done,
-                alignment: Alignment.center,
-              ),
-            ),
-            SizedBox(height: 63.v),
-            CustomElevatedButton(
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => VerifyOtpScreen(),
-                  ),
-                );
-              },
-              buttonStyle: ElevatedButton.styleFrom(
-                backgroundColor: Colors.black87,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(
-                    30,
-                  ),
-                ),
-              ),
-              width: 180.h,
-              text: "Verify OTP",
-              buttonTextStyle: const TextStyle(
-                color: Colors.white,
-              ),
-              alignment: Alignment.center,
-            ),
-          ],
-        ),
+  PreferredSizeWidget _buildAppBar(BuildContext context) {
+    return CustomAppBar(
+      leadingWidth: double.maxFinite,
+      leading: AppbarLeadingImage(
+        imagePath: ImageConstant.imgLogo,
+        margin: EdgeInsets.fromLTRB(24.h, 5.v, 292.h, 5.v),
       ),
     );
   }

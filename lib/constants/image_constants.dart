@@ -53,4 +53,28 @@ class ImageConstant {
 
   // Common images
   static String imgLogo = '$imagePath/logo.png';
+  static String img4631 = '$imagePath/img_46_3_1.png';
+
+  // login images
+
+  // Successful Scan images
+
+  static String imgGroup = '$imagePath/img_group.svg';
+
+  static String imgVenus = '$imagePath/img_venus.svg';
+
+  static String img461 = '$imagePath/img_46_1.png';
+
+  // Successful Scan One images
+  static String img4641 = '$imagePath/img_46_4_1.png';
+
+  static String img451 = '$imagePath/img_45_1.png';
+
+  static String img4671 = '$imagePath/img_46_7_1.png';
+
+  static String img4661 = '$imagePath/img_46_6_1.png';
+
+  static String imgGroup4 = '$imagePath/img_group_4.svg';
+
+  static String img4611 = '$imagePath/img_46_1_1.png';
 }
