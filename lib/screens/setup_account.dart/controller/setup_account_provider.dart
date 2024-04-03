@@ -1,0 +1,64 @@
+import 'package:flutter/material.dart';
+import 'package:nextdoorgym/screens/setup_account.dart/repository/setup_account_repository.dart';
+import 'package:nextdoorgym/utils/utils.dart';
+
+class SetupAccountProvider extends ChangeNotifier {
+  String? _genderValue;
+  String? get genderValue => _genderValue;
+  set genderValue(String? value) {
+    _genderValue = value;
+    notifyListeners();
+  }
+
+  bool _isLoading = false;
+  bool get isLoading => _isLoading;
+
+  set isLoading(bool value) {
+    _isLoading = value;
+    notifyListeners();
+  }
+
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController buildingController = TextEditingController();
+
+  void setupAccount({required BuildContext context}) async {
+    isLoading = true;
+    final apiResponse = await SetupAccountRepository.instance.setupAccount(
+      username: nameController.text,
+      email: emailController.text,
+      gender: genderValue!,
+    );
+
+    apiResponse.fold(
+      (l) {
+        Utils.showSnackBar('Something went wrong');
+        isLoading = false;
+      },
+      (r) {
+        Utils.showSnackBar('Account setup successfully');
+
+        isLoading = false;
+      },
+    );
+  }
+
+  void addApartment({required BuildContext context}) async {
+    isLoading = true;
+    final apiResponse = await SetupAccountRepository.instance.addBuilding(
+      building: buildingController.text,
+    );
+
+    apiResponse.fold(
+      (l) {
+        Utils.showSnackBar('Something went wrong');
+        isLoading = false;
+      },
+      (r) {
+        Utils.showSnackBar('Apartment added successfully');
+
+        isLoading = false;
+      },
+    );
+  }
+}
