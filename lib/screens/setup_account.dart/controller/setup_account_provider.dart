@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:nextdoorgym/screens/home_page/views/home_page.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/repository/setup_account_repository.dart';
+import 'package:nextdoorgym/screens/setup_account.dart/views/apartment_details_screen.dart';
 import 'package:nextdoorgym/utils/utils.dart';
 
 class SetupAccountProvider extends ChangeNotifier {
@@ -36,6 +38,12 @@ class SetupAccountProvider extends ChangeNotifier {
         isLoading = false;
       },
       (r) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const ApartmentDetailsScreen(),
+          ),
+        );
         Utils.showSnackBar('Account setup successfully');
 
         isLoading = false;
@@ -55,6 +63,8 @@ class SetupAccountProvider extends ChangeNotifier {
         isLoading = false;
       },
       (r) {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => const HomePage()));
         Utils.showSnackBar('Apartment added successfully');
 
         isLoading = false;

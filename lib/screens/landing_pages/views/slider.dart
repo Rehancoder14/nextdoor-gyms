@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:nextdoorgym/screens/apartment_details_screen/apartment_details_screen.dart';
+import 'package:nextdoorgym/screens/setup_account.dart/views/apartment_details_screen.dart';
 import 'package:nextdoorgym/screens/landing_pages/views/splash_screenone_screen/splash_screenone_screen.dart';
 import 'package:nextdoorgym/screens/landing_pages/views/splash_screentwo_screen/splash_screentwo_screen.dart';
 import 'package:nextdoorgym/screens/auth_page/views/login_screen.dart';
-import 'package:nextdoorgym/screens/setup_account.dart/setup_account_screen.dart';
+import 'package:nextdoorgym/screens/setup_account.dart/views/setup_account_screen.dart';
 import 'package:nextdoorgym/services/local_storage_service.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
+import 'package:nextdoorgym/widgets/custom_elevated_button.dart';
 
 class SliderScreen extends StatefulWidget {
-  const SliderScreen({Key? key}) : super(key: key);
+  const SliderScreen({super.key});
 
   @override
-  _SliderScreenState createState() => _SliderScreenState();
+  State<SliderScreen> createState() => _SliderScreenState();
 }
 
 class _SliderScreenState extends State<SliderScreen> {
@@ -43,7 +44,7 @@ class _SliderScreenState extends State<SliderScreen> {
               ],
             ),
           ),
-          Stack(
+          Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -52,22 +53,36 @@ class _SliderScreenState extends State<SliderScreen> {
                   (index) => buildDot(index),
                 ),
               ),
-              Positioned(
-                  right: 5,
-                  bottom: 5,
-                  child: _currentPage == 1
-                      ? TextButton(
-                          child: Text(
-                            'Next',
-                            style: TextStyle(
-                              color: appTheme.indigo300,
-                            ),
+              if (_currentPage == 1) ...[
+                SizedBox(
+                  height: 40,
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  child: CustomElevatedButton(
+                    onPressed: () {
+                      navigateBasedOnToken();
+                    },
+                    text: 'Next',
+                    buttonTextStyle: const TextStyle(color: Colors.white),
+                    buttonStyle: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.black,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(
+                            15,
                           ),
-                          onPressed: () {
-                            navigateBasedOnToken();
-                          },
-                        )
-                      : Container())
+                          bottomRight: Radius.circular(
+                            15,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+              ]
             ],
           ),
         ],
@@ -102,7 +117,7 @@ class _SliderScreenState extends State<SliderScreen> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => const SetupAccountScreen(),
+          builder: (context) => SetupAccountScreen(),
         ),
       );
     } else {
@@ -114,6 +129,4 @@ class _SliderScreenState extends State<SliderScreen> {
       );
     }
   }
-
-//!Note: take this code to provider
 }

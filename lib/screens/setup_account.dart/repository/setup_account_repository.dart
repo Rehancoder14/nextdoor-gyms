@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:nextdoorgym/constants/api_constant.dart';
 import 'package:nextdoorgym/helper/apibase_helper.dart';
 import 'package:nextdoorgym/services/api_services.dart';
+import 'package:nextdoorgym/services/local_storage_service.dart';
 
 class SetupAccountRepository {
   SetupAccountRepository._();
@@ -26,6 +27,7 @@ class SetupAccountRepository {
             "gender": gender,
           },
         );
+        LocalStoragaeService.updateUserData(response.data['data']);
         log(response.toString());
         return response.data;
       },
@@ -38,7 +40,7 @@ class SetupAccountRepository {
     return ApiCallWithErrorHandler.call(
       () async {
         final response = await _apiService.post(
-          ApiConstant.setup,
+          ApiConstant.addBuilding,
           {
             "apartment": building,
           },

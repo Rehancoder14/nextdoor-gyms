@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nextdoorgym/constants/image_constants.dart';
-import 'package:nextdoorgym/screens/setup_account.dart/setup_account_screen.dart';
+import 'package:nextdoorgym/screens/setup_account.dart/views/setup_account_screen.dart';
 import 'package:nextdoorgym/theme/app_decoration.dart';
 import 'package:nextdoorgym/theme/custom_text_style.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
@@ -128,43 +128,61 @@ class HomePage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 21.h,
-                      vertical: 4.v,
-                    ),
-                    decoration: AppDecoration.outlineBlack900.copyWith(
-                      borderRadius: BorderRadiusStyle.roundedBorder24,
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        SizedBox(height: 52.v),
-                        Text(
-                          "Swim",
-                          style: theme.textTheme.labelLarge,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Spacer(
-                    flex: 53,
-                  ),
                   Card(
                     clipBehavior: Clip.antiAlias,
                     elevation: 0,
-                    margin: EdgeInsets.all(0),
+                    margin: const EdgeInsets.all(0),
                     color: appTheme.gray100,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadiusStyle.roundedBorder24,
                     ),
                     child: Container(
-                      height: 80.adaptSize,
+                      height: 100.adaptSize,
                       width: 80.adaptSize,
                       padding: EdgeInsets.symmetric(
                         horizontal: 12.h,
-                        vertical: 3.v,
+                        vertical: 1.v,
+                      ),
+                      decoration: AppDecoration.fillGray.copyWith(
+                        borderRadius: BorderRadiusStyle.roundedBorder24,
+                      ),
+                      child: Stack(
+                        alignment: Alignment.bottomCenter,
+                        children: [
+                          CustomImageView(
+                            imagePath: ImageConstant.img451,
+                            width: 56.h,
+                            alignment: Alignment.topCenter,
+                            margin: EdgeInsets.only(top: 10.v),
+                          ),
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Text(
+                              "Swim",
+                              style: CustomTextStyles.bodyMediumDroidSans,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const Spacer(
+                    flex: 53,
+                  ),
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    elevation: 0,
+                    margin: const EdgeInsets.all(0),
+                    color: appTheme.gray100,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadiusStyle.roundedBorder24,
+                    ),
+                    child: Container(
+                      height: 100.adaptSize,
+                      width: 80.adaptSize,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 12.h,
+                        vertical: 1.v,
                       ),
                       decoration: AppDecoration.fillGray.copyWith(
                         borderRadius: BorderRadiusStyle.roundedBorder24,
@@ -189,13 +207,13 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Spacer(
+                  const Spacer(
                     flex: 46,
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(
                       horizontal: 16.h,
-                      vertical: 7.v,
+                      vertical: 4.v,
                     ),
                     decoration: AppDecoration.fillGray.copyWith(
                       borderRadius: BorderRadiusStyle.roundedBorder24,

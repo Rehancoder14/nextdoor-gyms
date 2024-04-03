@@ -61,11 +61,9 @@ class VerifyOtpScreen extends StatelessWidget {
                     fieldWidth: 40,
                     activeFillColor: Colors.white,
                   ),
-                  animationDuration: Duration(milliseconds: 300),
+                  animationDuration: const Duration(milliseconds: 300),
                   controller: context.read<AuthProvider>().otpController,
-                  onCompleted: (v) {
-                    print("Completed");
-                  },
+                  onCompleted: (v) {},
                   onChanged: (value) {},
                 ),
               ),

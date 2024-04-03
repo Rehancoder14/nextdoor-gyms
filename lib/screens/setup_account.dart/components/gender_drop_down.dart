@@ -58,7 +58,7 @@ class GenderDropDown extends StatelessWidget {
                 borderSide: BorderSide.none,
               ),
               contentPadding:
-                  EdgeInsets.symmetric(vertical: 15, horizontal: 10)),
+                  const EdgeInsets.symmetric(vertical: 15, horizontal: 10)),
           borderRadius: BorderRadius.circular(15),
           items: <String>['male', 'female', 'others']
               .map<DropdownMenuItem<String>>((String value) {
