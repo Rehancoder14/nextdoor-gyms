@@ -3,7 +3,9 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:nextdoorgym/constants/api_constant.dart';
 import 'package:nextdoorgym/helper/apibase_helper.dart';
+import 'package:nextdoorgym/screens/auth_page/model/user_model.dart';
 import 'package:nextdoorgym/services/api_services.dart';
+import 'package:nextdoorgym/services/local_storage_service.dart';
 
 class AuthRepository {
   AuthRepository._();
@@ -24,7 +26,7 @@ class AuthRepository {
     );
   }
 
-  Future<Either<ApiError, void>> verifyOtp(
+  Future<Either<ApiError, UserModel>> verifyOtp(
       {required String phoneNumber, required String otp}) async {
     return ApiCallWithErrorHandler.call(
       () async {
@@ -35,8 +37,10 @@ class AuthRepository {
             'otp': otp,
           },
         );
+        log(response.data.toString());
 
-        return response.data;
+        LocalStoragaeService.updateUserData(response.data['data']);
+        return UserModel.fromJson(response.data['data']);
       },
     );
   }

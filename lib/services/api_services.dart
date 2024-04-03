@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:nextdoorgym/constants/api_constant.dart';
+import 'package:nextdoorgym/services/local_storage_service.dart';
 
 class ApiService extends ChangeNotifier {
   final Dio _dio = Dio();
@@ -11,8 +12,13 @@ class ApiService extends ChangeNotifier {
     _dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) {
+          if (LocalStoragaeService.getUserValue(UserField.token) != null) {
+            options.headers['Authorization'] =
+                'Bearer ${LocalStoragaeService.getUserValue(UserField.token)}';
+          }
           log('Request: ${options.method} ${options.path}', name: 'apicheck');
           log('${options.baseUrl}${options.path}', name: 'apicheck');
+          log('Token: ${options.headers['Authorization']}', name: 'apicheck');
           if (options.method != 'GET') {
             log(' - With -');
             log('${options.data}');

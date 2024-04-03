@@ -3,7 +3,9 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:nextdoorgym/screens/auth_page/repository/auth_repository.dart';
-import 'package:nextdoorgym/screens/verify_otp_screen/verify_otp_screen.dart';
+import 'package:nextdoorgym/screens/home_page/views/home_page.dart';
+import 'package:nextdoorgym/screens/auth_page/views/verify_otp_screen.dart';
+import 'package:nextdoorgym/screens/setup_account.dart/setup_account_screen.dart';
 import 'package:nextdoorgym/utils/utils.dart';
 
 class AuthProvider extends ChangeNotifier {
@@ -51,8 +53,11 @@ class AuthProvider extends ChangeNotifier {
 
     apiResponse.fold(
       (l) {
+        mobileNumberController.clear();
+
         log(l.toString());
         Utils.showSnackBar('Failed to send the otp');
+        isLoading = false;
       },
       (r) {
         Navigator.pushReplacement(
@@ -72,14 +77,30 @@ class AuthProvider extends ChangeNotifier {
   void verifyOtp({
     required BuildContext context,
   }) async {
-    final apiResponse = await AuthRepository.instance.sendOtp(
+    final apiResponse = await AuthRepository.instance.verifyOtp(
       phoneNumber: mobileNumberController.text,
+      otp: otpController.text,
     );
 
     apiResponse.fold(
       (l) => Utils.showSnackBar(l.error ?? 'Failed to verify the otp'),
       (r) {
         Utils.showSnackBar('Otp verified successfully');
+        if (!r.isAccountSetup!) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const SetupAccountScreen(),
+            ),
+          );
+        } else {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const HomePage(),
+            ),
+          );
+        }
         otpController.clear();
       },
     );
@@ -119,7 +140,7 @@ class AuthProvider extends ChangeNotifier {
     apiResponse.fold((l) {
       Utils.showSnackBar('Failed to send the otp');
     }, (r) {
-      resendOtp = true;
+      resendOtp = false;
       showTimeFor60Seconds();
       Utils.showSnackBar('Otp sent successfully');
     });

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:nextdoorgym/screens/apartment_details_screen/apartment_details_screen.dart';
 import 'package:nextdoorgym/screens/landing_pages/views/splash_screenone_screen/splash_screenone_screen.dart';
 import 'package:nextdoorgym/screens/landing_pages/views/splash_screentwo_screen/splash_screentwo_screen.dart';
-import 'package:nextdoorgym/screens/login_screen/login_screen.dart';
+import 'package:nextdoorgym/screens/auth_page/views/login_screen.dart';
+import 'package:nextdoorgym/screens/setup_account.dart/setup_account_screen.dart';
+import 'package:nextdoorgym/services/local_storage_service.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
 
 class SliderScreen extends StatefulWidget {
@@ -55,18 +58,13 @@ class _SliderScreenState extends State<SliderScreen> {
                   child: _currentPage == 1
                       ? TextButton(
                           child: Text(
-                            'Login',
+                            'Next',
                             style: TextStyle(
                               color: appTheme.indigo300,
                             ),
                           ),
                           onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => LoginScreen(),
-                              ),
-                            );
+                            navigateBasedOnToken();
                           },
                         )
                       : Container())
@@ -88,4 +86,34 @@ class _SliderScreenState extends State<SliderScreen> {
       ),
     );
   }
+
+//write again
+  void navigateBasedOnToken() {
+    if (LocalStoragaeService.getUserValue(UserField.token) == null &&
+        LocalStoragaeService.getUserValue(UserField.isAccountSetup) == null) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => LoginScreen(),
+        ),
+      );
+    } else if (LocalStoragaeService.getUserValue(UserField.token) != null &&
+        !LocalStoragaeService.getUserValue(UserField.isAccountSetup)) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const SetupAccountScreen(),
+        ),
+      );
+    } else {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const ApartmentDetailsScreen(),
+        ),
+      );
+    }
+  }
+
+//!Note: take this code to provider
 }
