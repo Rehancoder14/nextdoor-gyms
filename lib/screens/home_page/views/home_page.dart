@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nextdoorgym/constants/image_constants.dart';
-import 'package:nextdoorgym/screens/setup_account.dart/views/setup_account_screen.dart';
+import 'package:nextdoorgym/screens/setup_account.dart/views/component/qr_scan_screen.dart';
 import 'package:nextdoorgym/theme/app_decoration.dart';
 import 'package:nextdoorgym/theme/custom_text_style.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
@@ -64,7 +64,7 @@ class HomePage extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => SetupAccountScreen()));
+                              builder: (context) => QrScannerWidget()));
                     },
                     text: "Check in",
                     margin: EdgeInsets.symmetric(horizontal: 19.h),

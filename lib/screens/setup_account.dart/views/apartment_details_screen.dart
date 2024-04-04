@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:nextdoorgym/constants/image_constants.dart';
+import 'package:nextdoorgym/screens/home_page/views/home_page.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/controller/setup_account_provider.dart';
 import 'package:nextdoorgym/services/local_storage_service.dart';
 import 'package:nextdoorgym/theme/app_decoration.dart';
@@ -187,7 +188,11 @@ class _ApartmentDetailsScreenState extends State<ApartmentDetailsScreen> {
                                 log(LocalStoragaeService.getUserValue(
                                         UserField.isAccountSetup)
                                     .toString());
-                                provider.addApartment(context: context);
+                                // provider.addApartment(context: context);
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const HomePage()));
                               },
                               text: provider.isLoading ? '' : "Input",
                               buttonStyle: CustomButtonStyles.fillPrimaryTL12,

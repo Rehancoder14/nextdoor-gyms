@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nextdoorgym/screens/setup_account.dart/views/apartment_details_screen.dart';
+import 'package:nextdoorgym/screens/home_page/views/home_page.dart';
 import 'package:nextdoorgym/screens/landing_pages/views/splash_screenone_screen/splash_screenone_screen.dart';
 import 'package:nextdoorgym/screens/landing_pages/views/splash_screentwo_screen/splash_screentwo_screen.dart';
 import 'package:nextdoorgym/screens/auth_page/views/login_screen.dart';
@@ -124,7 +124,7 @@ class _SliderScreenState extends State<SliderScreen> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => const ApartmentDetailsScreen(),
+          builder: (context) => const HomePage(),
         ),
       );
     }
