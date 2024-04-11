@@ -40,6 +40,12 @@ class AuthRepository {
         log(response.data.toString());
 
         LocalStoragaeService.updateUserData(response.data['data']);
+        log(response.data['data']['building'].toString());
+        if (response.data['data']['building'] != null) {
+          LocalStoragaeService.updateUserData(
+            response.data['data']['building'],
+          );
+        }
         return UserModel.fromJson(response.data['data']);
       },
     );

@@ -4,4 +4,5 @@ class ApiConstant {
   static const String verifyOtp = 'verify-otp';
   static const String setup = 'setup';
   static const String addBuilding = 'addbuilding';
+  static const String amenityForUser = 'amenityforuser';
 }

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -5,6 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'package:nextdoorgym/constants/image_constants.dart';
 import 'package:nextdoorgym/screens/home_page/views/home_page.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/controller/setup_account_provider.dart';
+import 'package:nextdoorgym/screens/setup_account.dart/views/component/scannedbottom_sheet.dart';
 import 'package:nextdoorgym/services/local_storage_service.dart';
 import 'package:nextdoorgym/theme/app_decoration.dart';
 import 'package:nextdoorgym/theme/custom_button_style.dart';
@@ -236,7 +238,10 @@ class _ApartmentDetailsScreenState extends State<ApartmentDetailsScreen> {
           result = scanData;
           showQrScanner = false;
           String qrdata = result!.code!;
-
+          Map<String, dynamic> data = jsonDecode(qrdata);
+          log(
+            data['building'].toString(),
+          );
           context.read<SetupAccountProvider>().buildingController.text = qrdata;
         });
         controller.pauseCamera();

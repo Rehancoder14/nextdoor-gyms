@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nextdoorgym/screens/home_page/views/home_page.dart';
+import 'package:nextdoorgym/screens/setup_account.dart/model/amenity_model.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/repository/setup_account_repository.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/views/apartment_details_screen.dart';
 import 'package:nextdoorgym/utils/utils.dart';
@@ -68,6 +69,33 @@ class SetupAccountProvider extends ChangeNotifier {
         Utils.showSnackBar('Apartment added successfully');
 
         isLoading = false;
+      },
+    );
+  }
+
+  AmenitiesModel? amenitiesModel;
+  bool _isBottomSheetLoading = false;
+  bool get isBottomSheetLoading => _isBottomSheetLoading;
+  set isBottomSheetLoading(bool value) {
+    _isBottomSheetLoading = value;
+    notifyListeners();
+  }
+
+  Future getAmenityForUser(
+      {required String id, required String buildingId}) async {
+    isBottomSheetLoading = true;
+    final apiResponse = await SetupAccountRepository.instance.getAmenityForUser(
+      id: id,
+      buildingId: buildingId,
+    );
+    apiResponse.fold(
+      (l) {
+        Utils.showSnackBar('Something went wrong');
+        isBottomSheetLoading = false;
+      },
+      (r) {
+        amenitiesModel = r;
+        isBottomSheetLoading = false;
       },
     );
   }

@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:nextdoorgym/constants/image_constants.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/views/component/qr_scan_screen.dart';
+import 'package:nextdoorgym/services/local_storage_service.dart';
 import 'package:nextdoorgym/theme/app_decoration.dart';
 import 'package:nextdoorgym/theme/custom_text_style.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
@@ -61,6 +64,9 @@ class HomePage extends StatelessWidget {
                   SizedBox(height: 11.v),
                   CustomElevatedButton(
                     onPressed: () {
+                      log(LocalStoragaeService.getUserValue(
+                              UserField.buildingName)
+                          .toString());
                       Navigator.push(
                           context,
                           MaterialPageRoute(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nextdoorgym/constants/image_constants.dart';
 import 'package:nextdoorgym/constants/validators.dart';
-import 'package:nextdoorgym/screens/setup_account.dart/components/gender_drop_down.dart';
+import 'package:nextdoorgym/screens/setup_account.dart/views/component/gender_drop_down.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/controller/setup_account_provider.dart';
 import 'package:nextdoorgym/theme/custom_button_style.dart';
 import 'package:nextdoorgym/theme/custom_text_style.dart';

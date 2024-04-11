@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:nextdoorgym/screens/setup_account.dart/views/component/scannedbottom_sheet.dart';
 import 'package:nextdoorgym/theme/custom_button_style.dart';
 import 'package:nextdoorgym/theme/custom_text_style.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
@@ -116,7 +115,16 @@ class _QrScannerWidgetState extends State<QrScannerWidget> {
                         right: 15,
                       ),
                       child: CustomElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return const ScannedBottomSheet(
+                                id: '66111b65190c6e8319fc9306',
+                              );
+                            },
+                          );
+                        },
                         text: "Input",
                         buttonStyle: CustomButtonStyles.fillPrimaryTL12,
                         buttonTextStyle: CustomTextStyles.bodyLargeOnPrimary,
@@ -196,7 +204,14 @@ class _QrScannerWidgetState extends State<QrScannerWidget> {
 
         controller.pauseCamera();
         Utils.showSnackBar(result!.code!);
-        Navigator.pop(context);
+        showModalBottomSheet(
+          context: context,
+          builder: (context) {
+            return ScannedBottomSheet(
+              id: result!.code!,
+            );
+          },
+        );
       }
 
       // Navigator.pop(context);
