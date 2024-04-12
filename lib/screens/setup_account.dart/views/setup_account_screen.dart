@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nextdoorgym/constants/image_constants.dart';
 import 'package:nextdoorgym/constants/validators.dart';
-import 'package:nextdoorgym/screens/apartment_details_screen/apartment_details_screen.dart';
-import 'package:nextdoorgym/screens/setup_account.dart/components/gender_drop_down.dart';
+import 'package:nextdoorgym/screens/setup_account.dart/views/component/gender_drop_down.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/controller/setup_account_provider.dart';
 import 'package:nextdoorgym/theme/custom_button_style.dart';
 import 'package:nextdoorgym/theme/custom_text_style.dart';
@@ -13,11 +12,11 @@ import 'package:nextdoorgym/widgets/custom_text_form_field.dart';
 import 'package:provider/provider.dart';
 
 class SetupAccountScreen extends StatelessWidget {
-  const SetupAccountScreen({super.key});
+  SetupAccountScreen({super.key});
 
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
     return SafeArea(
       child: Scaffold(
         // resizeToAvoidBottomInset: false,
@@ -125,16 +124,9 @@ class SetupAccountScreen extends StatelessWidget {
                         children: [
                           CustomElevatedButton(
                             onPressed: () async {
-                              // if (_formKey.currentState!.validate()) {
-                              //   provider.setupAccount(context: context);
-                              // }
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const ApartmentDetailsScreen(),
-                                ),
-                              );
+                              if (_formKey.currentState!.validate()) {
+                                provider.setupAccount(context: context);
+                              }
                             },
                             text: provider.isLoading ? '' : "Submit",
                             margin: EdgeInsets.symmetric(horizontal: 7.h),

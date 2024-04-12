@@ -1,7 +1,7 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/material.dart';
 
-// These are the Viewport values of your Figma Design.
-// These are used in the code as a reference to create your UI Responsively.
 const num FIGMA_DESIGN_WIDTH = 375;
 const num FIGMA_DESIGN_HEIGHT = 812;
 const num FIGMA_DESIGN_STATUS_BAR = 0;
@@ -17,7 +17,6 @@ class Sizer extends StatelessWidget {
     required this.builder,
   }) : super(key: key);
 
-  /// Builds the widget whenever the orientation changes.
   final ResponsiveBuild builder;
 
   @override
@@ -103,7 +102,7 @@ extension ResponsiveExtension on num {
 extension FormatExtension on double {
   /// Return a [double] value with formatted according to provided fractionDigits
   double toDoubleValue({int fractionDigits = 2}) {
-    return double.parse(this.toStringAsFixed(fractionDigits));
+    return double.parse(toStringAsFixed(fractionDigits));
   }
 
   double isNonZero({num defaultValue = 0.0}) {

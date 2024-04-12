@@ -3,7 +3,7 @@ import 'package:nextdoorgym/utils/size.dart';
 
 // ignore: must_be_immutable
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  CustomAppBar({
+  const CustomAppBar({
     Key? key,
     this.height,
     this.leadingWidth,

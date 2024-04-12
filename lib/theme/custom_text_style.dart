@@ -1,3 +1,5 @@
+// ignore_for_file: unused_element
+
 import 'package:flutter/material.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
 import 'package:nextdoorgym/utils/size.dart';
@@ -48,19 +50,19 @@ class CustomTextStyles {
         fontSize: 20.fSize,
       );
   static get titleLargeff000000 => theme.textTheme.titleLarge!.copyWith(
-        color: Color(0XFF000000),
+        color: const Color(0XFF000000),
         fontSize: 20.fSize,
       );
   static get titleLargeff00000020 => theme.textTheme.titleLarge!.copyWith(
-        color: Color(0XFF000000),
+        color: const Color(0XFF000000),
         fontSize: 20.fSize,
       );
   static get titleLargeff010101 => theme.textTheme.titleLarge!.copyWith(
-        color: Color(0XFF010101),
+        color: const Color(0XFF010101),
         fontSize: 20.fSize,
       );
   static get titleLargeff010101Bold => theme.textTheme.titleLarge!.copyWith(
-        color: Color(0XFF010101),
+        color: const Color(0XFF010101),
         fontSize: 20.fSize,
         fontWeight: FontWeight.w700,
       );

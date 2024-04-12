@@ -3,7 +3,7 @@ import 'package:nextdoorgym/theme/theme_helper.dart';
 import 'package:nextdoorgym/utils/size.dart';
 
 class CustomIconButton extends StatelessWidget {
-  CustomIconButton({
+  const CustomIconButton({
     Key? key,
     this.alignment,
     this.height,

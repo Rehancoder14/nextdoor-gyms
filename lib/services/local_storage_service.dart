@@ -12,7 +12,10 @@ enum UserField {
   refresh,
   token,
   mobile,
-  isAccountSetup
+  isAccountSetup,
+  gender,
+  buildingInternalId,
+  buildingName,
 }
 
 extension UserFieldExtension on UserField {
@@ -34,6 +37,10 @@ extension UserFieldExtension on UserField {
         return 'phone';
       case UserField.isAccountSetup:
         return 'isAccountSetup';
+      case UserField.buildingName:
+        return 'name';
+      case UserField.buildingInternalId:
+        return 'internalId';
       default:
         return '';
     }

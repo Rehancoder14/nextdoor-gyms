@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:nextdoorgym/constants/constant_methods.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/controller/setup_account_provider.dart';
+import 'package:nextdoorgym/screens/setup_account.dart/model/apartment_model.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
 import 'package:nextdoorgym/utils/size.dart';
 import 'package:provider/provider.dart';
 
-class GenderDropDown extends StatelessWidget {
-  const GenderDropDown({super.key});
+class ApartmentSelectDropDown extends StatelessWidget {
+  const ApartmentSelectDropDown({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +20,9 @@ class GenderDropDown extends StatelessWidget {
       ),
       child:
           Consumer<SetupAccountProvider>(builder: (context, provider, child) {
-        return DropdownButtonFormField<String>(
+        return DropdownButtonFormField<ApartmentModel>(
           dropdownColor: Colors.grey.shade300,
-          value: provider.genderValue,
+          value: provider.apartmentModel,
           icon: Icon(
             Icons.keyboard_arrow_down,
             color: appTheme.indigo150,
@@ -32,17 +33,17 @@ class GenderDropDown extends StatelessWidget {
             fontSize: 16,
           ),
           validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Please select your gender';
+            if (value == null) {
+              return 'Please select your apartment';
             }
             return null;
           },
-          onChanged: (String? newValue) {
-            provider.genderValue = newValue!;
+          onChanged: (ApartmentModel? newValue) {
+            provider.selectApartment(newValue!);
           },
           decoration: InputDecoration(
               fillColor: Colors.grey.shade200,
-              hintText: 'Select gender',
+              hintText: 'Select Apartment',
               hintStyle: TextStyle(
                   color: Colors.grey.shade500, fontWeight: FontWeight.w400),
               border: OutlineInputBorder(
@@ -58,15 +59,15 @@ class GenderDropDown extends StatelessWidget {
                 borderSide: BorderSide.none,
               ),
               contentPadding:
-                  EdgeInsets.symmetric(vertical: 15, horizontal: 10)),
+                  const EdgeInsets.symmetric(vertical: 15, horizontal: 10)),
           borderRadius: BorderRadius.circular(15),
-          items: <String>['male', 'female', 'others']
-              .map<DropdownMenuItem<String>>((String value) {
-            return DropdownMenuItem<String>(
+          items: provider.apartmentList
+              .map<DropdownMenuItem<ApartmentModel>>((ApartmentModel value) {
+            return DropdownMenuItem<ApartmentModel>(
               value: value,
               child: Text(
                 capitalizeFirstLetter(
-                  value,
+                  value.name!,
                 ),
               ),
             );
