@@ -107,23 +107,46 @@ class VerifyOtpScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 83.v),
-              CustomElevatedButton(
-                onPressed: () {
-                  context.read<AuthProvider>().verifyOtp(context: context);
-                },
-                buttonStyle: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                        15,
+
+              Consumer<AuthProvider>(
+                builder: (context, provider, _) {
+                  return Stack(
+                    children: [
+                      CustomElevatedButton(
+                        onPressed: provider.isLoading
+                            ? null
+                            : () {
+                                provider.verifyOtp(context: context);
+                              },
+                        buttonStyle: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                15,
+                              ),
+                            ),
+                            backgroundColor: appTheme.indigo150),
+                        text: provider.isLoading ? '' : "Submit",
+                        buttonTextStyle: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                        ),
                       ),
-                    ),
-                    backgroundColor: appTheme.indigo150),
-                text: "Verify OTP",
-                buttonTextStyle: const TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16,
-                ),
+                      Positioned(
+                        child: provider.isLoading
+                            ? const Padding(
+                                padding: EdgeInsets.only(top: 8.0),
+                                child: Center(
+                                  child: CircularProgressIndicator(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              )
+                            : Container(),
+                      )
+                    ],
+                  );
+                },
               ),
               SizedBox(height: 32.v),
               // CustomElevatedButton(

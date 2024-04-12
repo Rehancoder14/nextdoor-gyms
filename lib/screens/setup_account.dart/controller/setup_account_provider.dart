@@ -57,7 +57,8 @@ class SetupAccountProvider extends ChangeNotifier {
   void addApartment({required BuildContext context}) async {
     isLoading = true;
     final apiResponse = await SetupAccountRepository.instance.addBuilding(
-      building: buildingController.text,
+      building: apartmentModel!.internalId!,
+      block: apartmentBlock!.id!,
     );
 
     apiResponse.fold(

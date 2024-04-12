@@ -38,14 +38,13 @@ class SetupAccountRepository {
 
   Future<Either<ApiError, void>> addBuilding({
     required String building,
+    required String block,
   }) async {
     return ApiCallWithErrorHandler.call(
       () async {
         final response = await _apiService.post(
           ApiConstant.addBuilding,
-          {
-            "apartment": building,
-          },
+          {"buildingId": building, "blockId": block},
         );
         LocalStoragaeService.updateUserData(response.data['data']['building']);
         log(response.toString());

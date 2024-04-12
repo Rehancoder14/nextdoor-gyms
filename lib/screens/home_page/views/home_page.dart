@@ -80,7 +80,7 @@ class HomePage extends StatelessWidget {
                 buildInstructions(),
                 buildInstructions(),
                 buildInstructions(),
-                SizedBox(height: 93.v),
+                SizedBox(height: 20),
                 Padding(
                   padding: EdgeInsets.only(left: 18.h),
                   child: Text(

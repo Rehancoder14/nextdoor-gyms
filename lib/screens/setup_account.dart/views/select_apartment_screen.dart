@@ -177,25 +177,32 @@ class _SelectBlockAndApartmentScreenState
         ),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
-          child: CustomElevatedButton(
-            onPressed: () {
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => const HomePage()));
-            },
-            buttonStyle: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(
-                    15,
+          child:
+              Consumer<SetupAccountProvider>(builder: (context, provider, _) {
+            return CustomElevatedButton(
+              onPressed: provider.isLoading
+                  ? null
+                  : () {
+                      if (provider.apartmentBlock != null &&
+                          provider.apartmentModel != null) {
+                        provider.addApartment(context: context);
+                      }
+                    },
+              buttonStyle: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(
+                      15,
+                    ),
                   ),
-                ),
-                backgroundColor: appTheme.indigo150),
-            text: "Done",
-            buttonTextStyle: const TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.w500,
-              fontSize: 16,
-            ),
-          ),
+                  backgroundColor: appTheme.indigo150),
+              text: provider.isLoading ? 'Loading..' : "Submit",
+              buttonTextStyle: const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w700,
+                fontSize: 16,
+              ),
+            );
+          }),
         ),
       ),
     );
