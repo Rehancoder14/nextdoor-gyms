@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:nextdoorgym/constants/api_constant.dart';
 import 'package:nextdoorgym/helper/apibase_helper.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/model/amenity_model.dart';
+import 'package:nextdoorgym/screens/setup_account.dart/model/apartment_model.dart';
 import 'package:nextdoorgym/services/api_services.dart';
 import 'package:nextdoorgym/services/local_storage_service.dart';
 
@@ -49,6 +50,20 @@ class SetupAccountRepository {
         LocalStoragaeService.updateUserData(response.data['data']['building']);
         log(response.toString());
         return response.data;
+      },
+    );
+  }
+
+  Future<Either<ApiError, List<ApartmentModel>>> getBuilding() async {
+    return ApiCallWithErrorHandler.call(
+      () async {
+        final response = await _apiService.get(
+          ApiConstant.apartment,
+        );
+        log(response.data.toString());
+        return ApartmentModel.helper.fromMapArray(
+          response.data['data'],
+        );
       },
     );
   }

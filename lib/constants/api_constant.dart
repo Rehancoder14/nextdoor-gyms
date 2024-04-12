@@ -5,4 +5,6 @@ class ApiConstant {
   static const String setup = 'setup';
   static const String addBuilding = 'addbuilding';
   static const String amenityForUser = 'amenityforuser';
+  static const String amenity = 'amenity';
+  static const String apartment = 'apartment';
 }

@@ -3,7 +3,6 @@ import 'package:nextdoorgym/screens/setup_account.dart/views/component/scannedbo
 import 'package:nextdoorgym/theme/custom_button_style.dart';
 import 'package:nextdoorgym/theme/custom_text_style.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
-import 'package:nextdoorgym/utils/utils.dart';
 import 'package:nextdoorgym/widgets/custom_elevated_button.dart';
 import 'package:nextdoorgym/widgets/custom_image_view.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
@@ -203,7 +202,7 @@ class _QrScannerWidgetState extends State<QrScannerWidget> {
         });
 
         controller.pauseCamera();
-        Utils.showSnackBar(result!.code!);
+        // Utils.showSnackBar(result!.code!);
         showModalBottomSheet(
           context: context,
           builder: (context) {

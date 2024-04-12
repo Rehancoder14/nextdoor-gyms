@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nextdoorgym/screens/home_page/views/home_page.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/model/amenity_model.dart';
+import 'package:nextdoorgym/screens/setup_account.dart/model/apartment_model.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/repository/setup_account_repository.dart';
-import 'package:nextdoorgym/screens/setup_account.dart/views/apartment_details_screen.dart';
+import 'package:nextdoorgym/screens/setup_account.dart/views/select_apartment_screen.dart';
 import 'package:nextdoorgym/utils/utils.dart';
 
 class SetupAccountProvider extends ChangeNotifier {
@@ -21,6 +22,7 @@ class SetupAccountProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  List<ApartmentModel> apartmentList = [];
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController buildingController = TextEditingController();
@@ -42,7 +44,7 @@ class SetupAccountProvider extends ChangeNotifier {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => const ApartmentDetailsScreen(),
+            builder: (context) => const SelectBlockAndApartmentScreen(),
           ),
         );
         Utils.showSnackBar('Account setup successfully');
@@ -90,7 +92,7 @@ class SetupAccountProvider extends ChangeNotifier {
     );
     apiResponse.fold(
       (l) {
-        Utils.showSnackBar('Something went wrong');
+        Utils.showSnackBar(l.error ?? 'Something went wrong');
         isBottomSheetLoading = false;
       },
       (r) {
@@ -98,5 +100,44 @@ class SetupAccountProvider extends ChangeNotifier {
         isBottomSheetLoading = false;
       },
     );
+  }
+
+  bool _isBuildingLoading = false;
+  bool get isBuildingLoading => _isBuildingLoading;
+
+  set isBuildingLoading(bool value) {
+    _isBuildingLoading = value;
+    notifyListeners();
+  }
+
+  Future getApartment() async {
+    isBuildingLoading = true;
+    final apiResponse = await SetupAccountRepository.instance.getBuilding();
+    apiResponse.fold((l) {
+      Utils.showSnackBar(l.error ?? 'Something went wrong');
+    }, (r) {
+      apartmentList = r;
+      isBuildingLoading = false;
+    });
+  }
+
+  ApartmentModel? apartmentModel;
+  bool _isApartmentSelected = false;
+  bool get isApartmentSelected => _isApartmentSelected;
+  set isApartmentSelected(bool value) {
+    _isApartmentSelected = value;
+    notifyListeners();
+  }
+
+  void selectApartment(ApartmentModel apartment) {
+    apartmentModel = apartment;
+    apartmentBlockList = apartment.apartmentBlocks!;
+    isApartmentSelected = true;
+  }
+
+  List<ApartmentBlock> apartmentBlockList = [];
+  ApartmentBlock? apartmentBlock;
+  void selectBlock(ApartmentBlock block) {
+    apartmentBlock = block;
   }
 }
