@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:nextdoorgym/constants/constant_methods.dart';
 import 'package:nextdoorgym/constants/image_constants.dart';
-import 'package:nextdoorgym/screens/setup_account.dart/views/component/qr_scan_screen.dart';
+import 'package:nextdoorgym/screens/scan_amenity/views/qr_scan_screen.dart';
 import 'package:nextdoorgym/services/local_storage_service.dart';
 import 'package:nextdoorgym/theme/app_decoration.dart';
 import 'package:nextdoorgym/theme/custom_text_style.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nextdoorgym/screens/setup_account.dart/views/component/scannedbottom_sheet.dart';
+import 'package:nextdoorgym/screens/scan_amenity/views/scannedbottom_sheet.dart';
 import 'package:nextdoorgym/theme/custom_button_style.dart';
 import 'package:nextdoorgym/theme/custom_text_style.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';

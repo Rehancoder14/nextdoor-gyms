@@ -56,15 +56,17 @@ class _SliderScreenState extends State<SliderScreen> {
               Positioned(
                 right: 8,
                 bottom: 2,
-                child: IconButton(
-                  icon: const Icon(
-                    Icons.arrow_forward_outlined,
-                    size: 30,
-                  ),
-                  onPressed: () {
-                    navigateBasedOnToken();
-                  },
-                ),
+                child: _currentPage == 0
+                    ? Container()
+                    : IconButton(
+                        icon: const Icon(
+                          Icons.arrow_forward_outlined,
+                          size: 30,
+                        ),
+                        onPressed: () {
+                          navigateBasedOnToken();
+                        },
+                      ),
               ),
             ],
           ),
