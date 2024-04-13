@@ -4,6 +4,7 @@ import 'package:hive/hive.dart';
 import 'package:nextdoorgym/screens/auth_page/controller/auth_provider.dart';
 import 'package:nextdoorgym/screens/home_page/controller/home_provider.dart';
 import 'package:nextdoorgym/screens/landing_pages/views/splashscreen.dart';
+import 'package:nextdoorgym/screens/scan_amenity/controller/scanned_provider.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/controller/setup_account_provider.dart';
 import 'package:nextdoorgym/services/api_services.dart';
 import 'package:nextdoorgym/services/local_storage_service.dart';
@@ -46,6 +47,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<SetupAccountProvider>(
           create: (_) => SetupAccountProvider(),
+        ),
+        ChangeNotifierProvider<ScannedAmenityProvider>(
+          create: (_) => ScannedAmenityProvider(),
         ),
       ],
       child: Sizer(
