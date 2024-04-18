@@ -49,11 +49,13 @@ class _SplashScreenState extends State<SplashScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       CustomImageView(
+                        color: appTheme.indigo200,
                         imagePath: 'assets/images/badminton.png',
                         width: width,
                         alignment: Alignment.topRight,
                       ),
                       CustomImageView(
+                        color: appTheme.indigo200,
                         width: width,
                         imagePath: 'assets/images/dumbell.png',
                         alignment: Alignment.topRight,
@@ -110,9 +112,11 @@ class _SplashScreenState extends State<SplashScreen> {
                           CustomImageView(
                             width: width,
                             imagePath: 'assets/images/shoe.png',
+                            color: appTheme.indigo200,
                             alignment: Alignment.topRight,
                           ),
                           CustomImageView(
+                            color: appTheme.indigo200,
                             width: width,
                             imagePath: 'assets/images/shuttlecock.png',
                             alignment: Alignment.topRight,
@@ -123,6 +127,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           CustomImageView(
+                            color: appTheme.indigo200,
                             width: 250.h,
                             imagePath: 'assets/images/barbell.png',
                             alignment: Alignment.topRight,

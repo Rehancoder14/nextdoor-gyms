@@ -87,17 +87,6 @@ class SplashScreenoneScreen extends StatelessWidget {
                       const Spacer(
                         flex: 63,
                       ),
-                      Container(
-                        height: 20.v,
-                        width: 290.h,
-                        decoration: BoxDecoration(
-                          color: appTheme.gray800,
-                          border: Border.all(
-                            color: appTheme.black900,
-                            width: 1.h,
-                          ),
-                        ),
-                      ),
                     ],
                   ),
                 ),

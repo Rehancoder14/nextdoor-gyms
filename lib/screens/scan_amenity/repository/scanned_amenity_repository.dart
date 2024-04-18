@@ -39,4 +39,16 @@ class ScannedAmenityRepository {
       },
     );
   }
+
+  Future<Either<ApiError, List<ScannedAmenityModel>>> getAmenity() async {
+    return ApiCallWithErrorHandler.call(
+      () async {
+        final response = await _apiService.get(
+          ApiConstant.scanAmenity,
+        );
+
+        return ScannedAmenityModel.helper.fromMapArray(response.data['data']);
+      },
+    );
+  }
 }
