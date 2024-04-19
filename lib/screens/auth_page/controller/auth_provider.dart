@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:nextdoorgym/screens/auth_page/repository/auth_repository.dart';
 import 'package:nextdoorgym/screens/home_page/views/home_page.dart';
 import 'package:nextdoorgym/screens/auth_page/views/verify_otp_screen.dart';
+import 'package:nextdoorgym/screens/scan_amenity/controller/scanned_provider.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/views/setup_account_screen.dart';
 import 'package:nextdoorgym/utils/utils.dart';
+import 'package:provider/provider.dart';
 
 class AuthProvider extends ChangeNotifier {
   TextEditingController mobileNumberController = TextEditingController();
@@ -85,6 +87,7 @@ class AuthProvider extends ChangeNotifier {
     apiResponse.fold(
       (l) => Utils.showSnackBar(l.error ?? 'Failed to verify the otp'),
       (r) {
+        context.read<ScannedAmenityProvider>().userId = r.id;
         Utils.showSnackBar('Otp verified successfully');
         if (!r.isAccountSetup!) {
           Navigator.pushReplacement(

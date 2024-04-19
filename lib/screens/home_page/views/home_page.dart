@@ -28,6 +28,8 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       context.read<ScannedAmenityProvider>().getScanAmenity();
+
+      context.read<ScannedAmenityProvider>().getproFileById();
     });
 
     super.initState();

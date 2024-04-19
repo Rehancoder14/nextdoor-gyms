@@ -3,8 +3,6 @@ import 'package:nextdoorgym/screens/home_page/views/home_page.dart';
 import 'package:nextdoorgym/screens/landing_pages/views/splash_screenone_screen/splash_screenone_screen.dart';
 import 'package:nextdoorgym/screens/landing_pages/views/splash_screentwo_screen/splash_screentwo_screen.dart';
 import 'package:nextdoorgym/screens/auth_page/views/login_screen.dart';
-import 'package:nextdoorgym/screens/setup_account.dart/views/qr_scan_apartment.dart';
-import 'package:nextdoorgym/screens/setup_account.dart/views/setup_account_screen.dart';
 import 'package:nextdoorgym/services/local_storage_service.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
 
@@ -100,23 +98,14 @@ class _SliderScreenState extends State<SliderScreen> {
           builder: (context) => LoginScreen(),
         ),
       );
-    } else if (LocalStoragaeService.getUserValue(UserField.token) != null &&
-        !LocalStoragaeService.getUserValue(UserField.isAccountSetup)) {
-      if (LocalStoragaeService.getUserValue(UserField.userName) != null) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const QrScanApartment(),
-          ),
-        );
-      } else {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => SetupAccountScreen(),
-          ),
-        );
-      }
+    } else if (LocalStoragaeService.getUserValue(UserField.isAccountSetup) ==
+        false) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => LoginScreen(),
+        ),
+      );
     } else {
       Navigator.pushReplacement(
         context,

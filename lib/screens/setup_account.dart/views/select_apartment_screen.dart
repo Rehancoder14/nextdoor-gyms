@@ -6,6 +6,7 @@ import 'package:nextdoorgym/screens/setup_account.dart/model/apartment_model.dar
 import 'package:nextdoorgym/screens/setup_account.dart/views/component/select_blocks_apartment.dart';
 import 'package:nextdoorgym/services/local_storage_service.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
+import 'package:nextdoorgym/utils/size.dart';
 import 'package:nextdoorgym/widgets/custom_elevated_button.dart';
 import 'package:nextdoorgym/widgets/custom_image_view.dart';
 import 'package:nextdoorgym/widgets/custom_text_form_field.dart';
@@ -170,25 +171,100 @@ class _SelectBlockAndApartmentScreenState
                             const SizedBox(
                               height: 10,
                             ),
-                          ]
-                          // Padding(
-                          //   padding: EdgeInsets.symmetric(
-                          //       horizontal: MediaQuery.of(context).size.width * 0.08,
-                          //       vertical: 4),
-                          //   child: Row(
-                          //     children: [
-                          //       Text(
-                          //         'Flat',
-                          //       ),
-                          //     ],
-                          //   ),
-                          // ),
-                          // Padding(
-                          //   padding: EdgeInsets.symmetric(
-                          //     horizontal: MediaQuery.of(context).size.width * 0.1,
-                          //   ),
-                          //   child: const ApartmentSelectDropDown(),
-                          // ),
+                          ],
+                          if (provider.isBlockSelected) ...[
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal:
+                                      MediaQuery.of(context).size.width * 0.08,
+                                  vertical: 4),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    'Flat',
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal:
+                                    MediaQuery.of(context).size.width * 0.1,
+                              ),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.shade200,
+                                  borderRadius: BorderRadius.circular(
+                                    12,
+                                  ),
+                                ),
+                                child: Consumer<SetupAccountProvider>(
+                                  builder: (context, provider, child) {
+                                    return DropdownButtonFormField<String>(
+                                      dropdownColor: Colors.grey.shade300,
+                                      value: provider.flat,
+                                      icon: Icon(
+                                        Icons.keyboard_arrow_down,
+                                        color: appTheme.indigo150,
+                                      ),
+                                      elevation: 16,
+                                      style: TextStyle(
+                                        color: Colors.grey.shade800,
+                                        fontSize: 16,
+                                      ),
+                                      validator: (value) {
+                                        if (value == null) {
+                                          return 'Please select your flat';
+                                        }
+                                        return null;
+                                      },
+                                      onChanged: (String? newValue) {
+                                        provider.flat = newValue!;
+                                      },
+                                      decoration: InputDecoration(
+                                          fillColor: Colors.grey.shade200,
+                                          hintText: 'Select flat',
+                                          hintStyle: TextStyle(
+                                              color: Colors.grey.shade500,
+                                              fontWeight: FontWeight.w400),
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(15.h),
+                                            borderSide: BorderSide.none,
+                                          ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(15.h),
+                                            borderSide: BorderSide.none,
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(15.h),
+                                            borderSide: BorderSide.none,
+                                          ),
+                                          contentPadding:
+                                              const EdgeInsets.symmetric(
+                                                  vertical: 15,
+                                                  horizontal: 10)),
+                                      borderRadius: BorderRadius.circular(15),
+                                      items: flat.map<DropdownMenuItem<String>>(
+                                        (String value) {
+                                          return DropdownMenuItem<String>(
+                                            value: value,
+                                            child: Text(
+                                              capitalizeFirstLetter(
+                                                value,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ).toList(),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                          ],
                         ],
                       );
               }),
@@ -227,4 +303,14 @@ class _SelectBlockAndApartmentScreenState
       ),
     );
   }
+
+  List<String> flat = [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+  ];
 }

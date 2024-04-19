@@ -4,6 +4,8 @@ import 'package:dartz/dartz.dart';
 import 'package:nextdoorgym/constants/api_constant.dart';
 import 'package:nextdoorgym/helper/apibase_helper.dart';
 import 'package:nextdoorgym/screens/auth_page/model/user_model.dart';
+import 'package:nextdoorgym/screens/scan_amenity/controller/scanned_provider.dart';
+import 'package:nextdoorgym/screens/setup_account.dart/controller/setup_account_provider.dart';
 import 'package:nextdoorgym/services/api_services.dart';
 import 'package:nextdoorgym/services/local_storage_service.dart';
 

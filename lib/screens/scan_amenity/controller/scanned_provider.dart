@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:nextdoorgym/screens/scan_amenity/model/scanned_amenity_model.dart';
 import 'package:nextdoorgym/screens/scan_amenity/repository/scanned_amenity_repository.dart';
+import 'package:nextdoorgym/screens/setup_account.dart/repository/setup_account_repository.dart';
+import 'package:nextdoorgym/services/local_storage_service.dart';
 import 'package:nextdoorgym/utils/utils.dart';
 
 class ScannedAmenityProvider extends ChangeNotifier {
@@ -11,6 +13,14 @@ class ScannedAmenityProvider extends ChangeNotifier {
 
   set isLoading(bool value) {
     _isLoading = value;
+    notifyListeners();
+  }
+
+  String? _userId;
+  String? get userId => _userId;
+  set userId(String? value) {
+    _userId = value;
+    log(value.toString(), name: 'account');
     notifyListeners();
   }
 
@@ -57,6 +67,16 @@ class ScannedAmenityProvider extends ChangeNotifier {
       isLoading = false;
       getScanAmenityModel =
           r.firstWhere((element) => element.returnTime == null);
+    });
+  }
+
+  Future getproFileById() async {
+    final apiResponse =
+        await SetupAccountRepository.instance.getProfileByID(id: userId!);
+    apiResponse.fold((l) {
+      log(l.error.toString(), name: 'account');
+    }, (r) {
+      log("${LocalStoragaeService.getUserValue(UserField.buildingName)}");
     });
   }
 }
