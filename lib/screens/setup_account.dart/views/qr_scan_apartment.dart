@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:nextdoorgym/screens/setup_account.dart/views/component/scannedbottom_sheet.dart';
+import 'package:nextdoorgym/screens/scan_amenity/views/scannedbottom_sheet.dart';
+import 'package:nextdoorgym/screens/setup_account.dart/views/scan_detail_bottom_sheet.dart';
 import 'package:nextdoorgym/theme/custom_button_style.dart';
 import 'package:nextdoorgym/theme/custom_text_style.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
+import 'package:nextdoorgym/utils/utils.dart';
 import 'package:nextdoorgym/widgets/custom_elevated_button.dart';
 import 'package:nextdoorgym/widgets/custom_image_view.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
-class QrScannerWidget extends StatefulWidget {
-  const QrScannerWidget({super.key});
+class QrScanApartment extends StatefulWidget {
+  const QrScanApartment({super.key});
 
   @override
-  State<QrScannerWidget> createState() => _QrScannerWidgetState();
+  State<QrScanApartment> createState() => _QrScanApartmentState();
 }
 
-class _QrScannerWidgetState extends State<QrScannerWidget> {
+class _QrScanApartmentState extends State<QrScanApartment> {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   Barcode? result;
   QRViewController? controller;
@@ -202,11 +204,11 @@ class _QrScannerWidgetState extends State<QrScannerWidget> {
         });
 
         controller.pauseCamera();
-        // Utils.showSnackBar(result!.code!);
+        Utils.showSnackBar(result!.code!);
         showModalBottomSheet(
           context: context,
           builder: (context) {
-            return ScannedBottomSheet(
+            return ScannedApartmentBottomSheet(
               id: result!.code!,
             );
           },

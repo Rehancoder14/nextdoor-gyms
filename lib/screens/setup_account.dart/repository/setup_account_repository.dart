@@ -38,14 +38,13 @@ class SetupAccountRepository {
 
   Future<Either<ApiError, void>> addBuilding({
     required String building,
+    required String block,
   }) async {
     return ApiCallWithErrorHandler.call(
       () async {
         final response = await _apiService.post(
           ApiConstant.addBuilding,
-          {
-            "apartment": building,
-          },
+          {"buildingId": building, "blockId": block},
         );
         LocalStoragaeService.updateUserData(response.data['data']['building']);
         log(response.toString());
@@ -62,6 +61,24 @@ class SetupAccountRepository {
         );
         log(response.data.toString());
         return ApartmentModel.helper.fromMapArray(
+          response.data['data'],
+        );
+      },
+    );
+  }
+
+  Future<Either<ApiError, ApartmentModel>> getApartmentByID(
+      {required String id}) async {
+    return ApiCallWithErrorHandler.call(
+      () async {
+        final response = await _apiService.get(
+          ApiConstant.getApartmentByID,
+          queryParameters: {
+            id: id,
+          },
+        );
+        log(response.data.toString());
+        return ApartmentModel.fromJson(
           response.data['data'],
         );
       },

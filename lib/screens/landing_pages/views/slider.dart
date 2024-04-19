@@ -3,11 +3,10 @@ import 'package:nextdoorgym/screens/home_page/views/home_page.dart';
 import 'package:nextdoorgym/screens/landing_pages/views/splash_screenone_screen/splash_screenone_screen.dart';
 import 'package:nextdoorgym/screens/landing_pages/views/splash_screentwo_screen/splash_screentwo_screen.dart';
 import 'package:nextdoorgym/screens/auth_page/views/login_screen.dart';
-import 'package:nextdoorgym/screens/setup_account.dart/views/select_apartment_screen.dart';
+import 'package:nextdoorgym/screens/setup_account.dart/views/qr_scan_apartment.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/views/setup_account_screen.dart';
 import 'package:nextdoorgym/services/local_storage_service.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
-import 'package:nextdoorgym/widgets/custom_elevated_button.dart';
 
 class SliderScreen extends StatefulWidget {
   const SliderScreen({super.key});
@@ -45,7 +44,7 @@ class _SliderScreenState extends State<SliderScreen> {
               ],
             ),
           ),
-          Column(
+          Stack(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -54,37 +53,25 @@ class _SliderScreenState extends State<SliderScreen> {
                   (index) => buildDot(index),
                 ),
               ),
-              if (_currentPage == 1) ...[
-                SizedBox(
-                  height: 40,
-                  width: MediaQuery.of(context).size.width * 0.4,
-                  child: CustomElevatedButton(
-                    onPressed: () {
-                      navigateBasedOnToken();
-                    },
-                    text: 'Next',
-                    buttonTextStyle: const TextStyle(color: Colors.white),
-                    buttonStyle: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Colors.black,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(
-                            15,
-                          ),
-                          bottomRight: Radius.circular(
-                            15,
-                          ),
+              Positioned(
+                right: 8,
+                bottom: 2,
+                child: _currentPage == 0
+                    ? Container()
+                    : IconButton(
+                        icon: const Icon(
+                          Icons.arrow_forward_outlined,
+                          size: 30,
                         ),
+                        onPressed: () {
+                          navigateBasedOnToken();
+                        },
                       ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-              ]
+              ),
             ],
+          ),
+          const SizedBox(
+            height: 4,
           ),
         ],
       ),
@@ -119,7 +106,7 @@ class _SliderScreenState extends State<SliderScreen> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => const SelectBlockAndApartmentScreen(),
+            builder: (context) => const QrScanApartment(),
           ),
         );
       } else {
