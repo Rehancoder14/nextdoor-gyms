@@ -3,7 +3,7 @@ import 'package:nextdoorgym/screens/home_page/views/home_page.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/model/amenity_model.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/model/apartment_model.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/repository/setup_account_repository.dart';
-import 'package:nextdoorgym/screens/setup_account.dart/views/select_apartment_screen.dart';
+import 'package:nextdoorgym/screens/setup_account.dart/views/qr_scan_apartment.dart';
 import 'package:nextdoorgym/utils/utils.dart';
 
 class SetupAccountProvider extends ChangeNotifier {
@@ -44,7 +44,7 @@ class SetupAccountProvider extends ChangeNotifier {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => const SelectBlockAndApartmentScreen(),
+            builder: (context) => const QrScanApartment(),
           ),
         );
         Utils.showSnackBar('Account setup successfully');
@@ -130,10 +130,20 @@ class SetupAccountProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void selectApartment(ApartmentModel apartment) {
-    apartmentModel = apartment;
-    apartmentBlockList = apartment.apartmentBlocks!;
-    isApartmentSelected = true;
+  Future getApartmentById({required String id}) async {
+    isBuildingLoading = true;
+    isBottomSheetLoading = true;
+    final apiResponse =
+        await SetupAccountRepository.instance.getApartmentByID(id: id);
+    apiResponse.fold((l) {
+      Utils.showSnackBar(l.error ?? 'Something went wrong');
+    }, (r) {
+      apartmentModel = r;
+      apartmentBlockList = r.apartmentBlocks!;
+      isApartmentSelected = true;
+      isBuildingLoading = false;
+      isBottomSheetLoading = false;
+    });
   }
 
   List<ApartmentBlock> apartmentBlockList = [];
