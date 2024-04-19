@@ -38,14 +38,14 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       drawer: Drawer(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10),
+          padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 10),
           child: Column(
             children: [
               Row(
                 children: [
-                  Expanded(
+                  const Expanded(
                     flex: 1,
-                    child: const CircleAvatar(
+                    child: CircleAvatar(
                       radius: 30,
                     ),
                   ),
@@ -90,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     CustomImageView(
                       imagePath: ImageConstant.img4641,
-                      height: 250.v,
+                      height: 240.v,
                       width: double.maxFinite,
                     ),
                     Padding(
@@ -139,9 +139,16 @@ class _HomePageState extends State<HomePage> {
                             theme.textTheme.bodyLarge!.copyWith(fontSize: 20),
                       ),
                     ),
-                    buildInstructions(),
-                    buildInstructions(),
-                    buildInstructions(),
+                    buildInstructions(
+                      text:
+                          'Book a class that you like. Reach the center on time and enjoy your workout.',
+                      image: 'assets/images/icondumb.png',
+                    ),
+                    buildInstructions(
+                      text:
+                          'Visit our gym at anytime, check in via your phone and start work out.',
+                      image: 'assets/images/iconpeople.png',
+                    ),
                     const SizedBox(height: 20),
                     Padding(
                       padding: EdgeInsets.only(left: 18.h),
@@ -157,6 +164,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Positioned(
+            top: 20,
             child: Builder(builder: (context) {
               return IconButton(
                 onPressed: () {
@@ -182,7 +190,7 @@ class _HomePageState extends State<HomePage> {
                     15,
                   ),
                 ),
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   vertical: 10,
                 ),
                 backgroundColor: appTheme.indigo150),
@@ -208,10 +216,10 @@ class _HomePageState extends State<HomePage> {
                     }
                   },
             child: provider.isLoading
-                ? SizedBox(
+                ? const SizedBox(
                     height: 30,
                     width: 30,
-                    child: const Center(
+                    child: Center(
                       child: CircularProgressIndicator(),
                     ),
                   )
@@ -221,7 +229,7 @@ class _HomePageState extends State<HomePage> {
                       provider.getScanAmenityModel == null
                           ? 'Check in'
                           : 'Checkout',
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.black,
                       ),
                     ),
@@ -267,7 +275,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: Container(
                       height: 100.adaptSize,
-                      width: 80.adaptSize,
+                      width: 100.adaptSize,
                       padding: EdgeInsets.symmetric(
                         horizontal: 12.h,
                         vertical: 1.v,
@@ -376,23 +384,21 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget buildInstructions() {
-    return const Padding(
-      padding: EdgeInsets.symmetric(
+  Widget buildInstructions({required String text, required String image}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
         horizontal: 10.0,
         vertical: 5,
       ),
       child: Row(
         children: [
-          Icon(
-            Icons.arrow_forward_ios,
-          ),
-          SizedBox(
+          Image.asset(image),
+          const SizedBox(
             width: 4,
           ),
           Expanded(
             child: Text(
-              'Visit our gym at anytime, check in via your phone and start work out',
+              text,
               overflow: TextOverflow.ellipsis,
               maxLines: 3,
             ),

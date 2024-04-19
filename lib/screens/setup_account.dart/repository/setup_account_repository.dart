@@ -67,6 +67,24 @@ class SetupAccountRepository {
     );
   }
 
+  Future<Either<ApiError, ApartmentModel>> getApartmentByID(
+      {required String id}) async {
+    return ApiCallWithErrorHandler.call(
+      () async {
+        final response = await _apiService.get(
+          ApiConstant.getApartmentByID,
+          queryParameters: {
+            id: id,
+          },
+        );
+        log(response.data.toString());
+        return ApartmentModel.fromJson(
+          response.data['data'],
+        );
+      },
+    );
+  }
+
   Future<Either<ApiError, AmenitiesModel>> getAmenityForUser(
       {required String id, required String buildingId}) async {
     return ApiCallWithErrorHandler.call(

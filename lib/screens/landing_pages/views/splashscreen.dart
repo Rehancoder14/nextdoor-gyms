@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nextdoorgym/screens/home_page/views/home_page.dart';
 import 'package:nextdoorgym/screens/landing_pages/views/slider.dart';
-import 'package:nextdoorgym/screens/setup_account.dart/views/select_apartment_screen.dart';
+import 'package:nextdoorgym/screens/setup_account.dart/views/qr_scan_apartment.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/views/setup_account_screen.dart';
 import 'package:nextdoorgym/services/local_storage_service.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
@@ -158,7 +158,7 @@ class _SplashScreenState extends State<SplashScreen> {
     } else if (LocalStoragaeService.getUserValue(UserField.token) != null &&
         !LocalStoragaeService.getUserValue(UserField.isAccountSetup)) {
       if (LocalStoragaeService.getUserValue(UserField.userName) != null) {
-        return const SelectBlockAndApartmentScreen();
+        return const QrScanApartment();
       } else {
         return SetupAccountScreen();
       }

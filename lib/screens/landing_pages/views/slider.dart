@@ -3,7 +3,7 @@ import 'package:nextdoorgym/screens/home_page/views/home_page.dart';
 import 'package:nextdoorgym/screens/landing_pages/views/splash_screenone_screen/splash_screenone_screen.dart';
 import 'package:nextdoorgym/screens/landing_pages/views/splash_screentwo_screen/splash_screentwo_screen.dart';
 import 'package:nextdoorgym/screens/auth_page/views/login_screen.dart';
-import 'package:nextdoorgym/screens/setup_account.dart/views/select_apartment_screen.dart';
+import 'package:nextdoorgym/screens/setup_account.dart/views/qr_scan_apartment.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/views/setup_account_screen.dart';
 import 'package:nextdoorgym/services/local_storage_service.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
@@ -106,7 +106,7 @@ class _SliderScreenState extends State<SliderScreen> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => const SelectBlockAndApartmentScreen(),
+            builder: (context) => const QrScanApartment(),
           ),
         );
       } else {
