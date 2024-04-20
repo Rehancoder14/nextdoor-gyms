@@ -153,7 +153,7 @@ class _ScannedApartmentBottomSheetState
                                 ),
                               ),
                               backgroundColor: appTheme.indigo150),
-                          text: "Check in",
+                          text: "Proceed",
                           buttonTextStyle: const TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w500,

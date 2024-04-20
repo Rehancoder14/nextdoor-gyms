@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nextdoorgym/screens/scan_amenity/views/scannedbottom_sheet.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/views/scan_detail_bottom_sheet.dart';
-import 'package:nextdoorgym/theme/custom_button_style.dart';
-import 'package:nextdoorgym/theme/custom_text_style.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
 import 'package:nextdoorgym/utils/utils.dart';
-import 'package:nextdoorgym/widgets/custom_elevated_button.dart';
 import 'package:nextdoorgym/widgets/custom_image_view.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
@@ -101,35 +97,6 @@ class _QrScanApartmentState extends State<QrScanApartment> {
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.04,
-                    ),
-                    Text(
-                      '  Or input manually',
-                      style: theme.textTheme.headlineSmall!.copyWith(
-                          fontSize: 18,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w400),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: MediaQuery.of(context).size.height * 0.12,
-                        left: 15,
-                        right: 15,
-                      ),
-                      child: CustomElevatedButton(
-                        onPressed: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (context) {
-                              return const ScannedBottomSheet(
-                                id: '66111b65190c6e8319fc9306',
-                              );
-                            },
-                          );
-                        },
-                        text: "Input",
-                        buttonStyle: CustomButtonStyles.fillPrimaryTL12,
-                        buttonTextStyle: CustomTextStyles.bodyLargeOnPrimary,
-                      ),
                     ),
                   ],
                 ),

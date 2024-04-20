@@ -27,7 +27,7 @@ class LoginScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.white,
         resizeToAvoidBottomInset: false,
-        appBar: _buildAppBar(context),
+        // appBar: _buildAppBar(context),
         body: Container(
           color: Colors.white,
           width: SizeUtils.width,
@@ -40,12 +40,21 @@ class LoginScreen extends StatelessWidget {
               child: Container(
                 width: double.maxFinite,
                 padding: EdgeInsets.symmetric(
-                  horizontal: 30.h,
+                  horizontal: 25.h,
                   vertical: 10.v,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    SizedBox(
+                      height: 130.v,
+                      width: double.maxFinite,
+                      child: Row(
+                        children: [
+                          Image.asset('assets/images/logo.png'),
+                        ],
+                      ),
+                    ),
                     CustomImageView(
                       imagePath: ImageConstant.img101,
                       width: 240.h,
@@ -53,7 +62,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 21.v),
                     Text(
-                      "Login with mobile Number",
+                      "Login with mobile number",
                       style: CustomTextStyles.titleLarge20,
                     ),
                     SizedBox(height: 15.v),

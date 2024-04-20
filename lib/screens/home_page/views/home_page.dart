@@ -104,13 +104,13 @@ class _HomePageState extends State<HomePage> {
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: "Hi, Welcome ",
+                              text: "Hi, Welcome to ",
                               style: CustomTextStyles.titleLargeff010101,
                             ),
                             TextSpan(
                               text: capitalizeFirstLetter(
                                 LocalStoragaeService.getUserValue(
-                                  UserField.userName,
+                                  UserField.buildingName,
                                 ),
                               ),
                               style: CustomTextStyles.titleLargeff010101Bold,

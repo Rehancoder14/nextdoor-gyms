@@ -36,7 +36,7 @@ class SplashScreentwoScreen extends StatelessWidget {
                       SizedBox(
                         width: 343.h,
                         child: Text(
-                          "Easy and Seamless Access to society amenities",
+                          "Easy and seamless access to society amenities",
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.center,

@@ -47,7 +47,11 @@ class SetupAccountRepository {
           ApiConstant.addBuilding,
           {"buildingId": building, "blockId": block},
         );
-        LocalStoragaeService.updateUserData(response.data['data']['building']);
+        LocalStoragaeService.updateUserData(response.data['data']);
+
+        LocalStoragaeService.updateUserData(
+          response.data['data']['building'],
+        );
         log(response.toString());
         return response.data;
       },
