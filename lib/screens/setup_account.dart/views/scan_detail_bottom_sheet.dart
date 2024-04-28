@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nextdoorgym/constants/constant_methods.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/controller/setup_account_provider.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/views/select_apartment_screen.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
@@ -35,9 +36,10 @@ class _ScannedApartmentBottomSheetState
     return Container(
       height: 240,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        color: Colors.black,
+        gradient: backgroundGradient,
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(
             30,
           ),
@@ -57,7 +59,7 @@ class _ScannedApartmentBottomSheetState
                         "Apartment",
                         style: TextStyle(
                           fontSize: 18,
-                          color: Colors.black54,
+                          color: Colors.white,
                         ),
                       ),
                       const SizedBox(
@@ -70,7 +72,7 @@ class _ScannedApartmentBottomSheetState
                               "Id: ",
                               style: TextStyle(
                                 fontSize: 16,
-                                color: Colors.black54,
+                                color: Colors.white,
                               ),
                             ),
                           ),
@@ -79,7 +81,7 @@ class _ScannedApartmentBottomSheetState
                               provider.apartmentModel!.id ?? 'N/A',
                               style: const TextStyle(
                                 fontSize: 16,
-                                color: Colors.black87,
+                                color: Colors.white,
                               ),
                             ),
                           )
@@ -92,7 +94,7 @@ class _ScannedApartmentBottomSheetState
                               "Apartment: ",
                               style: TextStyle(
                                 fontSize: 16,
-                                color: Colors.black54,
+                                color: Colors.white,
                               ),
                             ),
                           ),
@@ -101,7 +103,7 @@ class _ScannedApartmentBottomSheetState
                               provider.apartmentModel!.name ?? 'N/A',
                               style: const TextStyle(
                                 fontSize: 16,
-                                color: Colors.black87,
+                                color: Colors.white,
                               ),
                             ),
                           )
@@ -114,7 +116,7 @@ class _ScannedApartmentBottomSheetState
                               "Contact: ",
                               style: TextStyle(
                                 fontSize: 16,
-                                color: Colors.black54,
+                                color: Colors.white,
                               ),
                             ),
                           ),
@@ -123,7 +125,7 @@ class _ScannedApartmentBottomSheetState
                               provider.apartmentModel!.contact ?? 'N/A',
                               style: const TextStyle(
                                 fontSize: 16,
-                                color: Colors.black87,
+                                color: Colors.white,
                               ),
                             ),
                           )
@@ -153,9 +155,8 @@ class _ScannedApartmentBottomSheetState
                                 ),
                               ),
                               backgroundColor: appTheme.indigo150),
-                          text: "Check in",
+                          text: "Proceed",
                           buttonTextStyle: const TextStyle(
-                            color: Colors.black,
                             fontWeight: FontWeight.w500,
                             fontSize: 16,
                           ),

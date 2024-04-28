@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
 import 'package:nextdoorgym/utils/size.dart';
 
@@ -112,6 +113,7 @@ class CustomTextFormField extends StatelessWidget {
         ),
       );
   InputDecoration get decoration => InputDecoration(
+        counterStyle: const TextStyle(color: Colors.white),
         hintText: hintText ?? "",
         hintStyle: hintStyle ?? theme.textTheme.titleMedium,
         prefixIcon: prefix,

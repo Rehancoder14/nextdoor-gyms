@@ -36,7 +36,7 @@ class SplashScreenoneScreen extends StatelessWidget {
                       SizedBox(
                         width: 294.h,
                         child: Text(
-                          "Elevated Wellness services within society",
+                          "Elevated wellness services within society",
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.center,

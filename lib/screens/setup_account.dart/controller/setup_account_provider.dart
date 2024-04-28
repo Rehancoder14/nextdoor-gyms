@@ -150,5 +150,21 @@ class SetupAccountProvider extends ChangeNotifier {
   ApartmentBlock? apartmentBlock;
   void selectBlock(ApartmentBlock block) {
     apartmentBlock = block;
+    isBlockSelected = true;
+  }
+
+  bool _isBlockSelected = false;
+  bool get isBlockSelected => _isBlockSelected;
+
+  set isBlockSelected(bool value) {
+    _isBlockSelected = value;
+    notifyListeners();
+  }
+
+  String? _flat = 'A';
+  String get flat => _flat!;
+  set flat(String value) {
+    _flat = value;
+    notifyListeners();
   }
 }

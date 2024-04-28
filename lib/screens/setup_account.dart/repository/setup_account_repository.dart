@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:nextdoorgym/constants/api_constant.dart';
 import 'package:nextdoorgym/helper/apibase_helper.dart';
+import 'package:nextdoorgym/screens/auth_page/model/user_model.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/model/amenity_model.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/model/apartment_model.dart';
 import 'package:nextdoorgym/services/api_services.dart';
@@ -46,7 +47,11 @@ class SetupAccountRepository {
           ApiConstant.addBuilding,
           {"buildingId": building, "blockId": block},
         );
-        LocalStoragaeService.updateUserData(response.data['data']['building']);
+        LocalStoragaeService.updateUserData(response.data['data']);
+
+        LocalStoragaeService.updateUserData(
+          response.data['data']['building'],
+        );
         log(response.toString());
         return response.data;
       },
@@ -79,6 +84,25 @@ class SetupAccountRepository {
         );
         log(response.data.toString());
         return ApartmentModel.fromJson(
+          response.data['data'],
+        );
+      },
+    );
+  }
+
+  Future<Either<ApiError, UserModel>> getProfileByID(
+      {required String id}) async {
+    return ApiCallWithErrorHandler.call(
+      () async {
+        final response = await _apiService.get(
+          'getProfileById',
+          queryParameters: {
+            id: id,
+          },
+        );
+        LocalStoragaeService.updateUserData(response.data['data']);
+        LocalStoragaeService.updateUserData(response.data['data']['building']);
+        return UserModel.fromJson(
           response.data['data'],
         );
       },

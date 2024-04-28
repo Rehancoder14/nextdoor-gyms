@@ -11,37 +11,39 @@ class CustomTextStyles {
       );
   static get bodyMediumDroidSans =>
       theme.textTheme.bodyMedium!.droidSans.copyWith(
+        color: Colors.white,
         fontSize: 13.fSize,
       );
   static get bodyMediumDroidSans14 =>
       theme.textTheme.bodyMedium!.droidSans.copyWith(
+        color: Colors.white,
         fontSize: 14.fSize,
       );
   static get bodyMediumDroidSansOnPrimary =>
       theme.textTheme.bodyMedium!.droidSans.copyWith(
-        color: theme.colorScheme.onPrimary,
+        color: Colors.white,
         fontSize: 14.fSize,
       );
   static get bodyMediumDroidSansPrimaryContainer =>
       theme.textTheme.bodyMedium!.droidSans.copyWith(
-        color: theme.colorScheme.primaryContainer,
+        color: Colors.white,
         fontSize: 13.fSize,
       );
   // Title text style
   static get titleLarge20 => theme.textTheme.titleLarge!.copyWith(
       fontSize: 20.fSize, fontWeight: FontWeight.w500, color: Colors.black87);
   static get titleLargeBlack900 => theme.textTheme.titleLarge!.copyWith(
-        color: appTheme.black900,
+        color: Colors.white,
         fontSize: 20.fSize,
       );
   static get titleLargeBlack900Bold => theme.textTheme.titleLarge!.copyWith(
-        color: appTheme.black900,
+        color: Colors.white,
         fontSize: 20.fSize,
         fontWeight: FontWeight.w700,
       );
   static get titleLargeOnPrimaryContainer =>
       theme.textTheme.titleLarge!.copyWith(
-        color: theme.colorScheme.onPrimaryContainer,
+        color: Colors.white,
         fontSize: 20.fSize,
       );
   static get titleLargeOnPrimaryContainer20 =>
@@ -50,24 +52,24 @@ class CustomTextStyles {
         fontSize: 20.fSize,
       );
   static get titleLargeff000000 => theme.textTheme.titleLarge!.copyWith(
-        color: const Color(0XFF000000),
+        color: Colors.white,
         fontSize: 20.fSize,
       );
   static get titleLargeff00000020 => theme.textTheme.titleLarge!.copyWith(
-        color: const Color(0XFF000000),
+        color: Colors.white,
         fontSize: 20.fSize,
       );
   static get titleLargeff010101 => theme.textTheme.titleLarge!.copyWith(
-        color: const Color(0XFF010101),
+        color: Colors.white,
         fontSize: 20.fSize,
       );
   static get titleLargeff010101Bold => theme.textTheme.titleLarge!.copyWith(
-        color: const Color(0XFF010101),
+        color: Colors.white,
         fontSize: 20.fSize,
         fontWeight: FontWeight.w700,
       );
   static get titleMediumBlack900 => theme.textTheme.titleMedium!.copyWith(
-        color: appTheme.black900,
+        color: Colors.white,
       );
 }
 

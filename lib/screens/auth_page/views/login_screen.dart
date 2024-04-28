@@ -1,9 +1,9 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:nextdoorgym/constants/constant_methods.dart';
 import 'package:nextdoorgym/constants/image_constants.dart';
 import 'package:nextdoorgym/screens/auth_page/controller/auth_provider.dart';
-import 'package:nextdoorgym/theme/custom_text_style.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
 import 'package:nextdoorgym/utils/size.dart';
 import 'package:nextdoorgym/widgets/appbar_leading_image.dart';
@@ -25,11 +25,13 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
         resizeToAvoidBottomInset: false,
-        appBar: _buildAppBar(context),
+        // appBar: _buildAppBar(context),
         body: Container(
-          color: Colors.white,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            gradient: backgroundGradient,
+          ),
           width: SizeUtils.width,
           child: SingleChildScrollView(
             padding: EdgeInsets.only(
@@ -40,12 +42,32 @@ class LoginScreen extends StatelessWidget {
               child: Container(
                 width: double.maxFinite,
                 padding: EdgeInsets.symmetric(
-                  horizontal: 30.h,
+                  horizontal: 25.h,
                   vertical: 10.v,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    SizedBox(
+                      height: 130.v,
+                      width: double.maxFinite,
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            'assets/images/logo.png',
+                            height: 70,
+                          ),
+                          const Text(
+                            "NEXTDOOR",
+                            style: TextStyle(
+                              fontSize: 28,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                     CustomImageView(
                       imagePath: ImageConstant.img101,
                       width: 240.h,
@@ -53,8 +75,11 @@ class LoginScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 21.v),
                     Text(
-                      "Login with mobile Number",
-                      style: CustomTextStyles.titleLarge20,
+                      "Login with mobile number",
+                      style: theme.textTheme.titleLarge!.copyWith(
+                          fontSize: 20.fSize,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white),
                     ),
                     SizedBox(height: 15.v),
                     CustomTextFormField(

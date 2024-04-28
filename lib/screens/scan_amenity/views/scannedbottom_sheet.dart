@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nextdoorgym/constants/constant_methods.dart';
 import 'package:nextdoorgym/screens/home_page/views/succesful_scan_page.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/controller/setup_account_provider.dart';
 import 'package:nextdoorgym/services/local_storage_service.dart';
@@ -36,7 +37,8 @@ class _ScannedBottomSheetState extends State<ScannedBottomSheet> {
     return Container(
       height: 240,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
+        gradient: backgroundGradient,
         color: Colors.white,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(
@@ -58,7 +60,7 @@ class _ScannedBottomSheetState extends State<ScannedBottomSheet> {
                         "Amenity",
                         style: TextStyle(
                           fontSize: 18,
-                          color: Colors.black54,
+                          color: Colors.white,
                         ),
                       ),
                       const SizedBox(
@@ -71,7 +73,7 @@ class _ScannedBottomSheetState extends State<ScannedBottomSheet> {
                               "Amenity: ",
                               style: TextStyle(
                                 fontSize: 16,
-                                color: Colors.black54,
+                                color: Colors.white,
                               ),
                             ),
                           ),
@@ -80,7 +82,7 @@ class _ScannedBottomSheetState extends State<ScannedBottomSheet> {
                               provider.amenitiesModel!.name ?? 'N/A',
                               style: const TextStyle(
                                 fontSize: 16,
-                                color: Colors.black87,
+                                color: Colors.white,
                               ),
                             ),
                           )
@@ -93,7 +95,7 @@ class _ScannedBottomSheetState extends State<ScannedBottomSheet> {
                               "Count: ",
                               style: TextStyle(
                                 fontSize: 16,
-                                color: Colors.black54,
+                                color: Colors.white,
                               ),
                             ),
                           ),
@@ -102,7 +104,7 @@ class _ScannedBottomSheetState extends State<ScannedBottomSheet> {
                               provider.amenitiesModel!.count.toString(),
                               style: const TextStyle(
                                 fontSize: 16,
-                                color: Colors.black87,
+                                color: Colors.white,
                               ),
                             ),
                           )
@@ -115,7 +117,7 @@ class _ScannedBottomSheetState extends State<ScannedBottomSheet> {
                               "CustomId: ",
                               style: TextStyle(
                                 fontSize: 16,
-                                color: Colors.black54,
+                                color: Colors.white,
                               ),
                             ),
                           ),
@@ -124,7 +126,7 @@ class _ScannedBottomSheetState extends State<ScannedBottomSheet> {
                               provider.amenitiesModel!.customId ?? 'N/A',
                               style: const TextStyle(
                                 fontSize: 16,
-                                color: Colors.black87,
+                                color: Colors.white,
                               ),
                             ),
                           )
@@ -137,7 +139,7 @@ class _ScannedBottomSheetState extends State<ScannedBottomSheet> {
                               "Description: ",
                               style: TextStyle(
                                 fontSize: 16,
-                                color: Colors.black54,
+                                color: Colors.white,
                               ),
                             ),
                           ),
@@ -146,7 +148,7 @@ class _ScannedBottomSheetState extends State<ScannedBottomSheet> {
                               provider.amenitiesModel!.description ?? 'N/A',
                               style: const TextStyle(
                                 fontSize: 16,
-                                color: Colors.black87,
+                                color: Colors.white,
                               ),
                             ),
                           )
