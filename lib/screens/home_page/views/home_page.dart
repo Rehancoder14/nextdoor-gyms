@@ -38,24 +38,41 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFF2B243F),
       drawer: Drawer(
+        backgroundColor: Colors.black87,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 10),
           child: Column(
             children: [
               Row(
                 children: [
-                  const Expanded(
+                  Expanded(
                     flex: 1,
                     child: CircleAvatar(
                       radius: 30,
+                      child: Text(
+                        capitalizeFirstLetter(
+                          LocalStoragaeService.getUserValue(
+                            UserField.userName,
+                          ),
+                        ).substring(0, 1),
+                        style: const TextStyle(
+                          fontSize: 24,
+                        ),
+                      ),
                     ),
                   ),
                   Expanded(
                     flex: 3,
                     child: Text(
-                      LocalStoragaeService.getUserValue(
-                        UserField.userName,
+                      capitalizeFirstLetter(
+                        LocalStoragaeService.getUserValue(
+                          UserField.userName,
+                        ),
+                      ),
+                      style: TextStyle(
+                        color: Colors.white,
                       ),
                     ),
                   )
@@ -73,8 +90,16 @@ class _HomePageState extends State<HomePage> {
                         false, // This makes sure that all previous screens are removed
                   );
                 },
-                leading: const Icon(Icons.logout),
-                title: const Text('Logout'),
+                leading: const Icon(
+                  Icons.logout,
+                  color: Colors.white,
+                ),
+                title: const Text(
+                  'Logout',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
               )
             ],
           ),
@@ -82,86 +107,87 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Stack(
         children: [
-          SizedBox(
+          Container(
+            decoration: BoxDecoration(gradient: backgroundGradient),
             width: SizeUtils.width,
+            height: double.infinity,
             child: SingleChildScrollView(
-              child: Container(
-                decoration: AppDecoration.fillWhiteA700,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomImageView(
-                      imagePath: ImageConstant.img4641,
-                      height: 240.v,
-                      width: double.maxFinite,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomImageView(
+                    imagePath: ImageConstant.img4641,
+                    height: 240.v,
+                    width: double.maxFinite,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: 25.h,
+                      top: 10,
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left: 25.h,
-                        top: 10,
-                      ),
-                      child: RichText(
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: "Hi, Welcome to ",
-                              style: CustomTextStyles.titleLargeff010101,
-                            ),
-                            TextSpan(
-                              text: capitalizeFirstLetter(
-                                LocalStoragaeService.getUserValue(
-                                  UserField.buildingName,
-                                ),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "Hi, Welcome to ",
+                            style: CustomTextStyles.titleLargeff010101,
+                          ),
+                          TextSpan(
+                            text: capitalizeFirstLetter(
+                              LocalStoragaeService.getUserValue(
+                                UserField.buildingName,
                               ),
-                              style: CustomTextStyles.titleLargeff010101Bold,
                             ),
-                          ],
-                        ),
-                        textAlign: TextAlign.left,
+                            style: CustomTextStyles.titleLargeff010101Bold,
+                          ),
+                        ],
+                      ),
+                      textAlign: TextAlign.left,
+                    ),
+                  ),
+                  SizedBox(height: 20.v),
+                  Padding(
+                    padding: EdgeInsets.only(left: 21.h),
+                    child: Text(
+                      "Amenities ",
+                      style: theme.textTheme.bodyLarge!.copyWith(
+                        fontSize: 18,
+                        color: Colors.white,
                       ),
                     ),
-                    SizedBox(height: 20.v),
-                    Padding(
-                      padding: EdgeInsets.only(left: 21.h),
-                      child: Text(
-                        "Amenities ",
-                        style:
-                            theme.textTheme.bodyLarge!.copyWith(fontSize: 18),
-                      ),
+                  ),
+                  SizedBox(height: 16.v),
+                  _buildTwentyFive(context),
+                  SizedBox(height: 16.v),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 10),
+                    child: Text(
+                      "How it works?",
+                      style: theme.textTheme.bodyLarge!
+                          .copyWith(color: Colors.white, fontSize: 20),
                     ),
-                    SizedBox(height: 16.v),
-                    _buildTwentyFive(context),
-                    SizedBox(height: 16.v),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 10),
-                      child: Text(
-                        "How it works?",
-                        style:
-                            theme.textTheme.bodyLarge!.copyWith(fontSize: 20),
-                      ),
+                  ),
+                  buildInstructions(
+                    text:
+                        'Book a class that you like. Reach the center on time and enjoy your workout.',
+                    image: 'assets/images/icondumb.png',
+                  ),
+                  buildInstructions(
+                    text:
+                        'Visit our gym at anytime, check in via your phone and start work out.',
+                    image: 'assets/images/iconpeople.png',
+                  ),
+                  const SizedBox(height: 20),
+                  Padding(
+                    padding: EdgeInsets.only(left: 18.h),
+                    child: Text(
+                      "Note: to use amenities, Scan QR Code",
+                      style: CustomTextStyles.bodyMediumDroidSans14,
                     ),
-                    buildInstructions(
-                      text:
-                          'Book a class that you like. Reach the center on time and enjoy your workout.',
-                      image: 'assets/images/icondumb.png',
-                    ),
-                    buildInstructions(
-                      text:
-                          'Visit our gym at anytime, check in via your phone and start work out.',
-                      image: 'assets/images/iconpeople.png',
-                    ),
-                    const SizedBox(height: 20),
-                    Padding(
-                      padding: EdgeInsets.only(left: 18.h),
-                      child: Text(
-                        "Note: to use amenities, Scan QR Code",
-                        style: CustomTextStyles.bodyMediumDroidSans14,
-                      ),
-                    ),
-                    SizedBox(height: 11.v),
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: 20),
+                ],
               ),
             ),
           ),
@@ -183,60 +209,68 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar:
           Consumer<ScannedAmenityProvider>(builder: (context, provider, _) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(
-                    15,
-                  ),
-                ),
-                padding: const EdgeInsets.symmetric(
-                  vertical: 10,
-                ),
-                backgroundColor: appTheme.indigo150),
-            onPressed: provider.isLoading
-                ? null
-                : () {
-                    log(provider.getScanAmenityModel.toString());
-                    if (provider.getScanAmenityModel != null) {
-                      provider.returnScanAmenity(
-                          context: context,
-                          amenityId: provider.getScanAmenityModel!.id!);
-                    } else {
-                      log(
-                        LocalStoragaeService.getUserValue(UserField.userName)
-                            .toString(),
-                      );
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const QrScannerWidget(),
+        return Row(
+          children: [
+            Expanded(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                          15,
                         ),
-                      );
-                    }
-                  },
-            child: provider.isLoading
-                ? const SizedBox(
-                    height: 30,
-                    width: 30,
-                    child: Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  )
-                : Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      provider.getScanAmenityModel == null
-                          ? 'Check in'
-                          : 'Checkout',
-                      style: const TextStyle(
-                        color: Colors.black,
                       ),
-                    ),
-                  ),
-          ),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 10,
+                      ),
+                      backgroundColor: appTheme.indigo150),
+                  onPressed: provider.isLoading
+                      ? null
+                      : () {
+                          log(provider.getScanAmenityModel.toString());
+                          if (provider.getScanAmenityModel != null) {
+                            provider.returnScanAmenity(
+                                context: context,
+                                amenityId: provider.getScanAmenityModel!.id!);
+                          } else {
+                            log(
+                              LocalStoragaeService.getUserValue(
+                                      UserField.userName)
+                                  .toString(),
+                            );
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const QrScannerWidget(),
+                              ),
+                            );
+                          }
+                        },
+                  child: provider.isLoading
+                      ? const SizedBox(
+                          height: 30,
+                          width: 30,
+                          child: Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        )
+                      : Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            provider.getScanAmenityModel == null
+                                ? 'Check in'
+                                : 'Checkout',
+                            style: const TextStyle(
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                ),
+              ),
+            ),
+          ],
         );
       }),
     );
@@ -298,7 +332,10 @@ class _HomePageState extends State<HomePage> {
                             alignment: Alignment.bottomCenter,
                             child: Text(
                               "Swim",
-                              style: CustomTextStyles.bodyMediumDroidSans,
+                              style: theme.textTheme.bodyMedium!.copyWith(
+                                color: Colors.black,
+                                fontSize: 13.fSize,
+                              ),
                             ),
                           ),
                         ],
@@ -339,7 +376,10 @@ class _HomePageState extends State<HomePage> {
                             alignment: Alignment.bottomCenter,
                             child: Text(
                               "yoga",
-                              style: CustomTextStyles.bodyMediumDroidSans,
+                              style: theme.textTheme.bodyMedium!.copyWith(
+                                color: Colors.black,
+                                fontSize: 13.fSize,
+                              ),
                             ),
                           ),
                         ],
@@ -371,7 +411,10 @@ class _HomePageState extends State<HomePage> {
                           padding: EdgeInsets.only(left: 9.h),
                           child: Text(
                             "Gym",
-                            style: CustomTextStyles.bodyMediumDroidSans,
+                            style: theme.textTheme.bodyMedium!.copyWith(
+                              color: Colors.black,
+                              fontSize: 13.fSize,
+                            ),
                           ),
                         ),
                       ],
@@ -403,6 +446,9 @@ class _HomePageState extends State<HomePage> {
               text,
               overflow: TextOverflow.ellipsis,
               maxLines: 3,
+              style: TextStyle(
+                color: Colors.white,
+              ),
             ),
           )
         ],

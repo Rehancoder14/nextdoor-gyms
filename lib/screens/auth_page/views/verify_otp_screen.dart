@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nextdoorgym/constants/constant_methods.dart';
 import 'package:nextdoorgym/screens/auth_page/controller/auth_provider.dart';
-import 'package:nextdoorgym/theme/custom_text_style.dart';
 import 'package:nextdoorgym/theme/theme_helper.dart';
 import 'package:nextdoorgym/utils/size.dart';
 import 'package:nextdoorgym/widgets/custom_elevated_button.dart';
@@ -20,6 +20,9 @@ class VerifyOtpScreen extends StatelessWidget {
         resizeToAvoidBottomInset: false,
         body: Container(
           width: double.maxFinite,
+          decoration: BoxDecoration(
+            gradient: backgroundGradient,
+          ),
           padding: EdgeInsets.symmetric(horizontal: 30.h),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -36,7 +39,10 @@ class VerifyOtpScreen extends StatelessWidget {
                     "Please enter the code we just set to (+91) *******${context.read<AuthProvider>().mobileNumberController.text.substring(7, 10)} to proceed",
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: CustomTextStyles.bodyMediumDroidSansOnPrimary,
+                    style: theme.textTheme.bodyMedium!.copyWith(
+                      color: Colors.white,
+                      fontSize: 14.fSize,
+                    ),
                   ),
                 ),
               ),
@@ -52,14 +58,20 @@ class VerifyOtpScreen extends StatelessWidget {
                   keyboardType: TextInputType.number,
                   length: 6,
                   obscureText: false,
+                  textStyle: const TextStyle(
+                    color: Colors.white,
+                  ),
                   animationType: AnimationType.fade,
                   pinTheme: PinTheme(
-                    inactiveColor: appTheme.indigo150,
+                    inactiveColor: Colors.white,
                     shape: PinCodeFieldShape.box,
                     borderRadius: BorderRadius.circular(5),
                     fieldHeight: 50,
                     fieldWidth: 40,
+                    activeColor: Colors.white,
+                    selectedFillColor: Colors.white,
                     activeFillColor: Colors.white,
+                    inactiveFillColor: Colors.white,
                   ),
                   animationDuration: const Duration(milliseconds: 300),
                   controller: context.read<AuthProvider>().otpController,
@@ -91,14 +103,16 @@ class VerifyOtpScreen extends StatelessWidget {
                             children: [
                               Text(
                                 "Resend OTP in : ",
-                                style: CustomTextStyles
-                                    .bodyMediumDroidSansPrimaryContainer,
+                                style: theme.textTheme.bodyMedium!.copyWith(
+                                  color: appTheme.indigo300,
+                                  fontSize: 15.fSize,
+                                ),
                               ),
                               Text(
                                 provider.time,
                                 style: theme.textTheme.bodyMedium!.copyWith(
-                                  color: appTheme.indigo150,
-                                  fontSize: 15.fSize,
+                                  color: appTheme.indigo300,
+                                  fontSize: 13.fSize,
                                 ),
                               )
                             ],
@@ -116,7 +130,14 @@ class VerifyOtpScreen extends StatelessWidget {
                         onPressed: provider.isLoading
                             ? null
                             : () {
-                                provider.verifyOtp(context: context);
+                                if (provider.isChecked) {
+                                  provider.verifyOtp(context: context);
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                          content: Text(
+                                              'Please check the terms and condtions')));
+                                }
                               },
                         buttonStyle: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
@@ -154,9 +175,26 @@ class VerifyOtpScreen extends StatelessWidget {
               //   buttonStyle: CustomButtonStyles.fillSecondaryContainer,
               // ),
               // SizedBox(height: 44.v),
-              Text(
-                "I agree to terms and conditions and privacy policy ",
-                style: theme.textTheme.bodySmall,
+              Consumer<AuthProvider>(
+                builder: (context, provider, _) {
+                  return Row(
+                    children: [
+                      Checkbox(
+                        focusColor: Colors.white,
+                        value: provider.isChecked,
+                        onChanged: (value) {
+                          provider.isChecked = value!;
+                        },
+                      ),
+                      Text(
+                        "I agree to terms and conditions and privacy policy ",
+                        style: theme.textTheme.bodySmall!.copyWith(
+                          color: Colors.white,
+                        ),
+                      )
+                    ],
+                  );
+                },
               ),
               SizedBox(height: 5.v),
             ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nextdoorgym/constants/constant_methods.dart';
 import 'package:nextdoorgym/constants/image_constants.dart';
 import 'package:nextdoorgym/constants/validators.dart';
 import 'package:nextdoorgym/screens/setup_account.dart/views/component/gender_drop_down.dart';
@@ -21,6 +22,10 @@ class SetupAccountScreen extends StatelessWidget {
       child: Scaffold(
         // resizeToAvoidBottomInset: false,
         body: Container(
+          height: double.infinity,
+          decoration: BoxDecoration(
+            gradient: backgroundGradient,
+          ),
           width: double.maxFinite,
           padding: EdgeInsets.symmetric(
             horizontal: 23.h,

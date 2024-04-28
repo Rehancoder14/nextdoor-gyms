@@ -4,7 +4,6 @@ import 'package:nextdoorgym/screens/landing_pages/views/splash_screenone_screen/
 import 'package:nextdoorgym/screens/landing_pages/views/splash_screentwo_screen/splash_screentwo_screen.dart';
 import 'package:nextdoorgym/screens/auth_page/views/login_screen.dart';
 import 'package:nextdoorgym/services/local_storage_service.dart';
-import 'package:nextdoorgym/theme/theme_helper.dart';
 
 class SliderScreen extends StatefulWidget {
   const SliderScreen({super.key});
@@ -83,7 +82,7 @@ class _SliderScreenState extends State<SliderScreen> {
       margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 15),
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: _currentPage == index ? PrimaryColors().indigo300 : Colors.grey,
+        color: _currentPage == index ? Colors.black87 : Colors.grey,
       ),
     );
   }

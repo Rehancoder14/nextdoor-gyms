@@ -13,6 +13,13 @@ import 'package:provider/provider.dart';
 class AuthProvider extends ChangeNotifier {
   TextEditingController mobileNumberController = TextEditingController();
   TextEditingController otpController = TextEditingController();
+  bool _isChecked = false;
+  bool get isChecked => _isChecked;
+
+  set isChecked(bool value) {
+    _isChecked = value;
+    notifyListeners();
+  }
 
   bool _resendOtp = false;
   bool get resendOtp => _resendOtp;

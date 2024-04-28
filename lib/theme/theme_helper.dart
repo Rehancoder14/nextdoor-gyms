@@ -68,37 +68,37 @@ class ThemeHelper {
 class TextThemes {
   static TextTheme textTheme(ColorScheme colorScheme) => TextTheme(
         bodyMedium: TextStyle(
-          color: appTheme.blueGray900,
+          color: Colors.white,
           fontSize: 13.fSize,
           fontFamily: 'Droid Sans',
           fontWeight: FontWeight.w400,
         ),
         bodySmall: TextStyle(
-          color: appTheme.blueGray600,
+          color: Colors.white,
           fontSize: 10.fSize,
           fontFamily: 'Droid Sans',
           fontWeight: FontWeight.w400,
         ),
         displayMedium: TextStyle(
-          color: appTheme.gray900,
+          color: Colors.white,
           fontSize: 43.fSize,
           fontFamily: 'Droid Sans',
           fontWeight: FontWeight.w700,
         ),
         headlineSmall: TextStyle(
-          color: appTheme.gray90001,
+          color: Colors.white,
           fontSize: 24.fSize,
           fontFamily: 'Droid Sans',
           fontWeight: FontWeight.w700,
         ),
         titleLarge: TextStyle(
-          color: appTheme.gray600,
+          color: Colors.white,
           fontSize: 20.fSize,
           fontFamily: 'Droid Sans',
           fontWeight: FontWeight.w400,
         ),
         titleMedium: TextStyle(
-          color: appTheme.gray100,
+          color: Colors.white,
           fontSize: 18.fSize,
           fontFamily: 'Droid Sans',
           fontWeight: FontWeight.w700,

@@ -38,9 +38,8 @@ class AuthRepository {
           },
         );
         log(response.data.toString());
+        LocalStoragaeService.updateUserData(response.data['data']);
         if (response.data['data']['isAccountSetup'] == true) {
-          LocalStoragaeService.updateUserData(response.data['data']);
-
           LocalStoragaeService.updateUserData(
             response.data['data']['building'],
           );

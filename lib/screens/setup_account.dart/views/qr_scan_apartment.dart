@@ -174,6 +174,7 @@ class _QrScanApartmentState extends State<QrScanApartment> {
         Utils.showSnackBar(result!.code!);
         showModalBottomSheet(
           context: context,
+          backgroundColor: Colors.black,
           builder: (context) {
             return ScannedApartmentBottomSheet(
               id: result!.code!,

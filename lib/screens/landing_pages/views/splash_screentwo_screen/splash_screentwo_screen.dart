@@ -81,31 +81,10 @@ class SplashScreentwoScreen extends StatelessWidget {
                           margin: EdgeInsets.only(right: 29.h),
                           child: Stack(
                             alignment: Alignment.topRight,
-                            children: [
-                              // CustomImageView(
-                              //   imagePath: ImageConstant.imgRectangle684Gray800,
-                              //   height: 48.v,
-                              //   alignment: Alignment.bottomCenter,
-                              // ),
-                              // CustomImageView(
-                              //   imagePath:
-                              //       ImageConstant.imgRectangle684Gray800239x62,
-                              //   width: 62.h,
-                              //   alignment: Alignment.topRight,
-                              //   margin: EdgeInsets.only(right: 38.h),
-                              // ),
-                              // CustomImageView(
-                              //   imagePath:
-                              //       ImageConstant.imgRectangle684Gray800223x51,
-                              //   width: 51.h,
-                              //   alignment: Alignment.centerLeft,
-                              //   margin: EdgeInsets.only(left: 46.h),
-                              // ),
-                            ],
+                            children: [],
                           ),
                         ),
                       ),
-                      // _buildEight(context),
                       SizedBox(height: 80.v),
                     ],
                   ),
