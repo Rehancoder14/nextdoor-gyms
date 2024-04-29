@@ -40,7 +40,7 @@ class _ScannedBottomSheetState extends State<ScannedBottomSheet> {
       decoration: BoxDecoration(
         gradient: backgroundGradient,
         color: Colors.white,
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(
             30,
           ),
@@ -54,139 +54,148 @@ class _ScannedBottomSheetState extends State<ScannedBottomSheet> {
           builder: (context, provider, _) {
             return provider.isBottomSheetLoading
                 ? const CircularProgressIndicator()
-                : Column(
-                    children: <Widget>[
-                      const Text(
-                        "Amenity",
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        children: [
-                          const Expanded(
-                            child: Text(
-                              "Amenity: ",
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Text(
-                              provider.amenitiesModel!.name ?? 'N/A',
-                              style: const TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          const Expanded(
-                            child: Text(
-                              "Count: ",
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Text(
-                              provider.amenitiesModel!.count.toString(),
-                              style: const TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          const Expanded(
-                            child: Text(
-                              "CustomId: ",
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Text(
-                              provider.amenitiesModel!.customId ?? 'N/A',
-                              style: const TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          const Expanded(
-                            child: Text(
-                              "Description: ",
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Text(
-                              provider.amenitiesModel!.description ?? 'N/A',
-                              style: const TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10.0, vertical: 10),
-                        child: CustomElevatedButton(
-                          onPressed: () {
-                            Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SuccessfulScanPage(
-                                  amenity: provider.amenitiesModel!,
-                                ),
-                              ),
-                              (Route<dynamic> route) =>
-                                  false, // This makes sure that all previous screens are removed
-                            );
-                          },
-                          buttonStyle: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                  15,
-                                ),
-                              ),
-                              backgroundColor: appTheme.indigo150),
-                          text: "Check in",
-                          buttonTextStyle: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16,
+                : provider.amenitiesModel == null
+                    ? const Center(
+                        child: Text(
+                          'Wrong Qr code scan',
+                          style: TextStyle(
+                            color: Colors.white,
                           ),
                         ),
-                      ),
-                    ],
-                  );
+                      )
+                    : Column(
+                        children: <Widget>[
+                          const Text(
+                            "Amenity",
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              const Expanded(
+                                child: Text(
+                                  "Amenity: ",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  provider.amenitiesModel?.name ?? 'N/A',
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              const Expanded(
+                                child: Text(
+                                  "Count: ",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  provider.amenitiesModel!.count.toString(),
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              const Expanded(
+                                child: Text(
+                                  "CustomId: ",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  provider.amenitiesModel!.customId ?? 'N/A',
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              const Expanded(
+                                child: Text(
+                                  "Description: ",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  provider.amenitiesModel!.description ?? 'N/A',
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10.0, vertical: 10),
+                            child: CustomElevatedButton(
+                              onPressed: () {
+                                Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => SuccessfulScanPage(
+                                      amenity: provider.amenitiesModel!,
+                                    ),
+                                  ),
+                                  (Route<dynamic> route) =>
+                                      false, // This makes sure that all previous screens are removed
+                                );
+                              },
+                              buttonStyle: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(
+                                      15,
+                                    ),
+                                  ),
+                                  backgroundColor: appTheme.indigo150),
+                              text: "Check in",
+                              buttonTextStyle: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
           },
         ),
       ),
