@@ -311,7 +311,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: Container(
                       height: 100.adaptSize,
-                      width: 100.adaptSize,
+                      width: 90.adaptSize,
                       padding: EdgeInsets.symmetric(
                         horizontal: 12.h,
                         vertical: 1.v,
@@ -324,7 +324,7 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           CustomImageView(
                             imagePath: ImageConstant.img451,
-                            width: 56.h,
+                            width: 70.h,
                             alignment: Alignment.topCenter,
                             margin: EdgeInsets.only(top: 10.v),
                           ),
@@ -334,7 +334,7 @@ class _HomePageState extends State<HomePage> {
                               "Swim",
                               style: theme.textTheme.bodyMedium!.copyWith(
                                 color: Colors.black,
-                                fontSize: 13.fSize,
+                                fontSize: 15.fSize,
                               ),
                             ),
                           ),
